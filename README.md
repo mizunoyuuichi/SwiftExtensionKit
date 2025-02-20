@@ -1,0 +1,2 @@
+# SwiftExtensionKit
+Swiftのextensionを集めたものになります。partsも含みます。
