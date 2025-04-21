@@ -11,6 +11,10 @@ public extension Int {
 		CGFloat(self)
 	}
 
+	var string: String {
+		String(self)
+	}
+
 	var range: Range<Int> {
 		0..<self
 	}
