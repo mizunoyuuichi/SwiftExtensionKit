@@ -8,6 +8,6 @@ public extension Range {
 
 	// MARK: - cast
 	var array: [Bound] {
-		Array(self)
+		Swift.Array(self)
 	}
 }
