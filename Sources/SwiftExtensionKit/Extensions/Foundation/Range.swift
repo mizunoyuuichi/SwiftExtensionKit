@@ -4,10 +4,10 @@ import Foundation
 import CoreFoundation
 import CoreGraphics
 
-public extension Range {
+public extension Range where Element: Equatable , Comparable {
 
 	// MARK: - cast
 	var array: [Bound] {
-		Swift.Array(self)
+		Array(self)
 	}
 }
