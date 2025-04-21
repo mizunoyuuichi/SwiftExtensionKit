@@ -5,8 +5,13 @@ import CoreFoundation
 import CoreGraphics
 
 public extension Int {
+	// MARK: - cast
 	var cgfloat: CGFloat {
 		CGFloat(self)
+	}
+
+	var renge: Range<Int> {
+		0..<self
 	}
 
 	var random: Int {
