@@ -22,4 +22,9 @@ public extension Int {
 	var plus1: Int {
 		self + 1
 	}
+
+	// MARK: - format
+	var jpYen: String {
+		get { return "¥\(separated)" }
+	}
 }
