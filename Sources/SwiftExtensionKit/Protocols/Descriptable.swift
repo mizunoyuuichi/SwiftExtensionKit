@@ -1,6 +1,6 @@
 //  Created by Yuuichi Mizuno
 import Foundation
 
-protocol Descriptable {
+public protocol Descriptable {
 	var description: String { get }
 }
