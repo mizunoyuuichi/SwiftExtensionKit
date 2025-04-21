@@ -5,6 +5,7 @@ import CoreFoundation
 import CoreGraphics
 
 public extension Int {
+
 	// MARK: - cast
 	var cgfloat: CGFloat {
 		CGFloat(self)
@@ -19,6 +20,22 @@ public extension Int {
 	}
 
 	// MARK: - compar
+	var isPositive: Bool {
+		0 < self
+	}
+
+	var isNegativeOrNeutral: Bool {
+		self <= 0
+	}
+
+	var isNeutral: Bool {
+		self == 0
+	}
+
+	var isNegative: Bool {
+		self < 0
+	}
+
 	var plus1: Int {
 		self + 1
 	}
