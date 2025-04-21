@@ -10,7 +10,7 @@ public extension Int {
 		CGFloat(self)
 	}
 
-	var renge: Range<Int> {
+	var range: Range<Int> {
 		0..<self
 	}
 
