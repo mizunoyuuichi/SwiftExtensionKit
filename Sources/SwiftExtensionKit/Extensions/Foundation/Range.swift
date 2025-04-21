@@ -7,7 +7,7 @@ import CoreGraphics
 public extension Range {
 
 	// MARK: - cast
-	var array: Array {
+	var array: [Bound] {
 		Array(self)
 	}
 }
