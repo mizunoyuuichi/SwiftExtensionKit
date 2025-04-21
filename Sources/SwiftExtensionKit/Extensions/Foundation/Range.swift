@@ -4,8 +4,8 @@ import Foundation
 import CoreFoundation
 import CoreGraphics
 
-public extension Renge {
-	
+public extension Range {
+
 	// MARK: - cast
 	var array: Array {
 		Array(self)
