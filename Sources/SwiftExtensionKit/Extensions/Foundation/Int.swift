@@ -4,7 +4,7 @@ import Foundation
 import CoreFoundation
 import CoreGraphics
 
-extension Int {
+public extension Int {
 	var cgfloat: CGFloat {
 		CGFloat(self)
 	}

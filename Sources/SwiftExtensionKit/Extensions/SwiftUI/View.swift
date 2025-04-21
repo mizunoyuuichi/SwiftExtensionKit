@@ -4,7 +4,7 @@ import Foundation
 import SwiftUI
 
 // MARK: - GeometryReader
-extension View {
+public extension View {
 
 	@ViewBuilder
 	func onChangeOffsetX(_ compHander: @escaping(CGFloat)->()) -> some View {

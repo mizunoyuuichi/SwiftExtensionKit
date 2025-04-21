@@ -2,7 +2,7 @@
 
 import UIKit
 
-extension UIView { // MARK: - add / remove
+public extension UIView { // MARK: - add / remove
 
 	/// 上下左右 同じ状態で重ねる
 	func addSubviewWithConstraintAround(_ subview: UIView, padding: CGFloat = 0) {

@@ -2,7 +2,7 @@
 
 import Foundation
 
-extension Array {
+public extension Array {
 
 	func isInRange(_ index: Int) -> Bool {
 		index < self.count
