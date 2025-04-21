@@ -6,6 +6,11 @@ import CoreGraphics
 
 public extension Int {
 
+	// MARK: - debug
+	var random: Int {
+		Int.random(in: 0...self)
+	}
+
 	// MARK: - cast
 	var cgfloat: CGFloat {
 		CGFloat(self)
@@ -17,10 +22,6 @@ public extension Int {
 
 	var range: Range<Int> {
 		0..<self
-	}
-
-	var random: Int {
-		Int.random(in: 0...self)
 	}
 
 	// MARK: - compar
@@ -45,7 +46,19 @@ public extension Int {
 	}
 
 	// MARK: - format
+	var separated: String {
+		get {
+			let isMinus = self < 0
+			let formatter = NumberFormatter()
+				formatter.numberStyle = .decimal
+				formatter.groupingSeparator = ","
+				formatter.groupingSize = 3
+			let formated = formatter.string(from: NSNumber(value: abs(self))) ?? "0"
+			return isMinus ? "-\(formated)" : "\(formated)"
+		}
+	}
+
 	var jpYen: String {
-		get { return "¥\(separated)" }
+		"¥\(separated)"
 	}
 }
