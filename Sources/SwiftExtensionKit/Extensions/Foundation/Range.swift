@@ -8,6 +8,6 @@ public extension Renge {
 	
 	// MARK: - cast
 	var array: Array {
-		Array((self)
+		Array(self)
 	}
 }
