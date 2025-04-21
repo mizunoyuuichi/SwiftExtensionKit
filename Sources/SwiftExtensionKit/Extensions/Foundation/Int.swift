@@ -15,7 +15,7 @@ public extension Int {
 	}
 
 	var random: Int {
-		.random(in: 0...self)
+		Int.random(in: 0...self)
 	}
 
 	// MARK: - compar
