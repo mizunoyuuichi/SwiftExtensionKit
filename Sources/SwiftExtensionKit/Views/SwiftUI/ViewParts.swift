@@ -11,7 +11,7 @@ public extension View {
 		_ enumType: T.Type,
 		_ current: T,
 		_ selected: ((T)->())?
-	) -> some View where T.RawValue == String, T: Hashable {
+	) -> some View where T: Hashable {
 		Menu {
 			ForEach(Array(enumType.allCases), id: \.self) { item in
 				Button {
