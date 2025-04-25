@@ -29,5 +29,6 @@ public extension Color {
 	static var k30  : Color { Color.init(hue: 0, saturation: 0, brightness: 0.7) }
 	static var k20  : Color { Color.init(hue: 0, saturation: 0, brightness: 0.8) }
 	static var k10  : Color { Color.init(hue: 0, saturation: 0, brightness: 0.9) }
+	static var k4   : Color { Color.init(hue: 0, saturation: 0, brightness: 0.96) }
 	static var k0   : Color { Color.init(hue: 0, saturation: 0, brightness: 1.0) }
 }
