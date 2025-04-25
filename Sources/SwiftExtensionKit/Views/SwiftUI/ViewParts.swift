@@ -7,7 +7,7 @@ import SwiftUI
 public extension View {
 
 	@ViewBuilder
-	func filterMenu<T: RawRepresentable & CaseIterable & Descriptable>(
+	func filterMenu<T: CaseIterable & Descriptable>(
 		_ enumType: T.Type,
 		_ current: T,
 		_ selected: ((T)->())?
