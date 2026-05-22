@@ -4,6 +4,16 @@ import Foundation
 import CoreFoundation
 import CoreGraphics
 
+// MARK: - cast
+public extension String {
+
+    var intValue: Int{ Int(self) ?? 0 }
+
+    var toI: Int { self.intValue }
+}
+
+
+
 public extension String {
 
 	// MARK: - format
