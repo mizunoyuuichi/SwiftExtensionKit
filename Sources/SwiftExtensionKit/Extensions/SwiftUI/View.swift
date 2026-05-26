@@ -3,6 +3,27 @@
 import Foundation
 import SwiftUI
 
+// MARK: - style
+extension View {
+
+    func paddingLeftAround() -> some View {
+        padding([.top, .leading, .bottom], 12)
+    }
+
+    func styleWidthFitLeadingRound(_ isActive: Bool) -> some View {
+        frame(maxWidth: .infinity)
+            .background(isActive ? LinearGradient.styleCyanTone : LinearGradient.styleMonoTone)
+            .clipShape(RoundedRectangle(cornerRadius: 20))
+            .padding(.leading)
+    }
+
+    func styleFrameFit() -> some View {
+        frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+}
+
+
+
 // MARK: - GeometryReader
 public extension View {
 
@@ -18,6 +39,8 @@ public extension View {
 		}
 	}
 }
+
+
 
 // MARK: - PreferenceKeys
 struct OnChangeOffsetXKey: PreferenceKey {
