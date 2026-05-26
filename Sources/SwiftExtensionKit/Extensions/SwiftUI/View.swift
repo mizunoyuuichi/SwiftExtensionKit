@@ -4,7 +4,7 @@ import Foundation
 import SwiftUI
 
 // MARK: - style
-extension View {
+public extension View {
 
     func paddingLeftAround() -> some View {
         padding([.top, .leading, .bottom], 12)
