@@ -1,6 +1,6 @@
 import Foundation
 
-extension UserDefaults {
+public extension UserDefaults {
 
     static func save(_ key: String, value: Any) {
         standard.set(value, forKey: key)

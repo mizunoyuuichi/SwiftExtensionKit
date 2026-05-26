@@ -1,5 +1,5 @@
 import SwiftUI
 
-extension GridItem {
+public extension GridItem {
     static var singleFit: [GridItem] { [GridItem(.flexible())] }
 }

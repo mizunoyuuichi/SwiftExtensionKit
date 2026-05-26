@@ -1,6 +1,6 @@
 import SwiftUI
 
-extension LinearGradient {
+public extension LinearGradient {
 
     static var styleMonoTone: LinearGradient {
         LinearGradient(

@@ -1,6 +1,6 @@
 import Foundation
 
-extension TimeInterval {
+public extension TimeInterval {
 
     var before: TimeInterval { self * -1 }
 }

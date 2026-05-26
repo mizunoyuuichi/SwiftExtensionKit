@@ -3,7 +3,7 @@ import SwiftUI
 
 
 // MARK: - style
-extension Text {
+public extension Text {
 
     func styleHead1() -> some View {
         font(.headline).fontWeight(.semibold).lineLimit(1)

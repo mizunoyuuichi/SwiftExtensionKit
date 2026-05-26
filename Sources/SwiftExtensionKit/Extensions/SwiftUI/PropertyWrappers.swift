@@ -17,7 +17,7 @@ struct DefaultUUID: Codable {
     }
 }
 
-extension KeyedDecodingContainer {
+public extension KeyedDecodingContainer {
     func decode(_ type: DefaultUUID.Type, forKey key: Key) throws -> DefaultUUID {
         try decodeIfPresent(type, forKey: key) ?? DefaultUUID()
     }
