@@ -3,22 +3,22 @@ import Foundation
 
 /// ex) `@DefaultUUID var id   : String`
 @propertyWrapper
-struct DefaultUUID: Codable {
-    var wrappedValue: String
+public struct DefaultUUID: Codable {
+    public var wrappedValue: String
 
-    init(wrappedValue: String = UUID().uuidString) { self.wrappedValue = wrappedValue }
+    public init(wrappedValue: String = UUID().uuidString) { self.wrappedValue = wrappedValue }
 
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         wrappedValue = (try? decoder.singleValueContainer().decode(String.self)) ?? UUID().uuidString
     }
 
-    func encode(to encoder: Encoder) throws {
+    public func encode(to encoder: Encoder) throws {
         try wrappedValue.encode(to: encoder)
     }
 }
 
-extension KeyedDecodingContainer {
-    func decode(_ type: DefaultUUID.Type, forKey key: Key) throws -> DefaultUUID {
+public extension KeyedDecodingContainer {
+    public func decode(_ type: DefaultUUID.Type, forKey key: Key) throws -> DefaultUUID {
         try decodeIfPresent(type, forKey: key) ?? DefaultUUID()
     }
 }
