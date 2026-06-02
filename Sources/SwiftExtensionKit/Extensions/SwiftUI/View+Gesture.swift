@@ -10,7 +10,7 @@ import UIKit
 /// という性質を持ち、ScrollView 内のセルでの「長押し → ドラッグ」用途に適している。
 extension View {
 
-    func longPressToDragGesture(
+    public func longPressToDragGesture(
         minimumPressDuration: TimeInterval = 0.25,
         onBegan: @escaping (CGPoint) -> Void,
         onChanged: @escaping (CGPoint) -> Void,
