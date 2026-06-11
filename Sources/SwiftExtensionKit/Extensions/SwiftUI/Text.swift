@@ -1,7 +1,5 @@
 import SwiftUI
 
-
-
 // MARK: - style
 public extension Text {
     /// 同じようなテキストの規格化 (純正のものは使いにくそうなので独自に用意)
