@@ -13,7 +13,7 @@ public extension Text {
             .fontWeight(isSelected ? .medium : .regular)
             //.lineLimit(2)
             //.minimumScaleFactor(0.5)
-            .foregroundStyle(isActive ? Color.k20 : Color.k50)
+            .foregroundStyle(isActive ? Color.k80 : Color.k50)
     }
     /// 本文
     func asBody(isStraightLine: Bool = false, alignment: Alignment = .leading) -> Text {
@@ -31,35 +31,35 @@ public extension Text {
         self
     }
     /// 補足
-    func asCaption(isStraightLine: Bool = false, alignment: Alignment = .leading) -> some View {
+    func asCaption(isStraightLine: Bool = false, alignment: Alignment = .leading) -> Text {
         self
             .font(.system(size: 14, weight: .medium))
-            .minimumScaleFactor(0.5)
-            .lineLimit(isStraightLine ? 1 : nil)
-            .lineSpacing(2)
+        //  .minimumScaleFactor(0.5)
+        //  .lineLimit(isStraightLine ? 1 : nil)
+        // .lineSpacing(2)
             .foregroundColor(.k40)
-            .frame(maxWidth: .infinity, alignment: alignment)
+            //.frame(maxWidth: .infinity, alignment: alignment)
     }
     /// 最小の注釈
-    func asFootnote(isStraightLine: Bool = false, alignment: Alignment = .leading) -> some View {
+    func asFootnote(isStraightLine: Bool = false, alignment: Alignment = .leading) -> Text {
         self
             .font(.system(size: 12, weight: .medium))
-            .minimumScaleFactor(0.5)
-            .lineLimit(isStraightLine ? 1 : nil)
-            .lineSpacing(2)
+        //.minimumScaleFactor(0.5)
+        //.lineLimit(isStraightLine ? 1 : nil)
+        //.lineSpacing(2)
             .foregroundColor(.k40)
-            .frame(maxWidth: .infinity, alignment: alignment)
+            //.frame(maxWidth: .infinity, alignment: alignment)
     }
 
     // MARK: 特殊系
-    func asDetailLink(isActive: Bool = true, alignment: Alignment = .leading) -> some View {
+    func asDetailLink(isActive: Bool = true, alignment: Alignment = .leading, isGuideGray: Bool = false) -> Text {
         self
-            .font(.system(size: 10, weight: .medium))
-            .minimumScaleFactor(0.5)
-            .lineLimit(1)
-            .foregroundColor(isActive ? .blue : .blue.opacity(0.6))
-            .frame(maxWidth: .infinity, alignment: alignment)
-            .padding(.top, 4)
+            .font(.system(size: isGuideGray ? 14 : 10, weight: .medium))
+        //  .minimumScaleFactor(0.5)
+        //  .lineLimit(1)
+            .foregroundColor(isGuideGray ? Color.k50 : .blue)
+        //  .frame(maxWidth: .infinity, alignment: alignment)
+        //.padding(.top, 4)
     }
 }
 
@@ -72,16 +72,20 @@ public extension Text {
     // 軽やかに
     func airily() -> some View {
         self
+            .kerning(4)
     }
 
     // ゆったりと
     func relaxedly() -> some View {
         self
+            .kerning(1.4)
     }
 
     // きちんと
-    func formally() -> some View {
+    func formally(alignment: Alignment = .leading) -> some View {
         self
+            .frame(maxWidth: .infinity, alignment: alignment)
+//            .kerning(1.4)
     }
 
     // しっかりだけど詰め気味
