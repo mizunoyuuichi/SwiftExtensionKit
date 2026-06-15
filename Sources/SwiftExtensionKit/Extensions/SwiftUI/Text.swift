@@ -6,60 +6,41 @@ public extension Text {
     /// 基本5つ : { head, body, label, caption, footnote }
 
     /// 見出し
-    func asHead(isActive: Bool = true, isSelected: Bool = false) -> Text {
+    func asHead() -> Text {
         self
-            .kerning(-0.2)
-            .font(.system(size: 18))  // ここも上書きできる値参照させるか、、
-            .fontWeight(isSelected ? .medium : .regular)
-            //.lineLimit(2)
-            //.minimumScaleFactor(0.5)
-            .foregroundStyle(isActive ? Color.k80 : Color.k50)
-    }
-    /// 本文
-    func asBody(isStraightLine: Bool = false, alignment: Alignment = .leading) -> Text {
-        self
-            .font(.system(size: 16, weight: .medium))
-            .foregroundStyle(Color.k40)
-            //.minimumScaleFactor(0.5)
-            //.lineLimit(isStraightLine ? 1 : nil)
-            //.lineSpacing(2) as! Text
-
-            //.frame(maxWidth: .infinity, alignment: alignment)
+            .font(.system(size: 18, weight: .medium))
+            .fontWeight(.medium)
+            .foregroundStyle(Color.k90)
     }
     /// UI部品
     func asLabel() -> Text {
         self
+            .font(.system(size: 16, weight: .medium))
+    }
+    /// 本文
+    func asBody() -> Text {
+        self
+            .font(.system(size: 16, weight: .regular))
+            .foregroundStyle(Color.k70)
     }
     /// 補足
     func asCaption(isStraightLine: Bool = false, alignment: Alignment = .leading) -> Text {
         self
-            .font(.system(size: 14, weight: .medium))
-        //  .minimumScaleFactor(0.5)
-        //  .lineLimit(isStraightLine ? 1 : nil)
-        // .lineSpacing(2)
-            .foregroundColor(.k40)
-            //.frame(maxWidth: .infinity, alignment: alignment)
+            .font(.system(size: 14, weight: .light))
+            .foregroundColor(.k50)
     }
     /// 最小の注釈
     func asFootnote(isStraightLine: Bool = false, alignment: Alignment = .leading) -> Text {
         self
-            .font(.system(size: 12, weight: .medium))
-        //.minimumScaleFactor(0.5)
-        //.lineLimit(isStraightLine ? 1 : nil)
-        //.lineSpacing(2)
+            .font(.system(size: 12, weight: .thin))
             .foregroundColor(.k40)
-            //.frame(maxWidth: .infinity, alignment: alignment)
     }
 
     // MARK: 特殊系
     func asDetailLink(isActive: Bool = true, alignment: Alignment = .leading, isGuideGray: Bool = false) -> Text {
         self
             .font(.system(size: isGuideGray ? 14 : 10, weight: .medium))
-        //  .minimumScaleFactor(0.5)
-        //  .lineLimit(1)
             .foregroundColor(isGuideGray ? Color.k50 : .blue)
-        //  .frame(maxWidth: .infinity, alignment: alignment)
-        //.padding(.top, 4)
     }
 }
 
@@ -73,25 +54,29 @@ public extension Text {
     func airily() -> some View {
         self
             .kerning(4)
+            .lineSpacing(2.5)
     }
 
     // ゆったりと
     func relaxedly() -> some View {
         self
             .kerning(1.4)
+            .lineSpacing(2)
     }
 
     // きちんと
     func formally(alignment: Alignment = .leading) -> some View {
         self
+            .kerning(-0.4)
+            .lineSpacing(1.3)
             .frame(maxWidth: .infinity, alignment: alignment)
-//            .kerning(1.4)
     }
 
     // しっかりだけど詰め気味
     func tightly() -> some View {
         self
         .kerning(-0.2)
+        .lineSpacing(1.1)
         //.lineLimit(2)
         //.lineSpacing(2)
         //.minimumScaleFactor(0.5)
@@ -113,5 +98,37 @@ public extension Text {
     func styleBody1() -> some View {
         font(.footnote).lineLimit(1)
     }
+
+}
+
+
+
+#Preview {
+    let a: String = "日替わりセール 2026/06/15 このあのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。"
+
+    VStack(alignment: .leading, spacing: 16) {
+        Text(a + "　[asHead, airily]")
+            .asHead().airily()
+
+        Text(a + "　[asLabel, formally]")
+            .asLabel().formally()
+
+        Text(a + "　[asBody, relaxedly]")
+            .asBody().relaxedly()
+
+        Text(a + "　[asBody, formally]")
+            .asBody().formally()
+
+        Text(a + "　[asCaption, formally]")
+            .asCaption().formally()
+
+
+        Text(a + "　[asFootnote, tightly]")
+            .asFootnote().tightly()
+
+        Text("\(Image(systemName: "questionmark.circle")) シーズンのランクについて")
+            .asDetailLink(isGuideGray: true).formally(alignment: .trailing)
+    }
+    .padding(.horizontal, 24)
 
 }
