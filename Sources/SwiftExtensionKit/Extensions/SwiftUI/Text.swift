@@ -51,17 +51,19 @@ public extension Text {
     /// 基本4つ { airily, relaxedly, formally, tightly }
 
     // 軽やかに
-    func airily() -> some View {
+    func airily(alignment: Alignment = .leading) -> some View {
         self
             .kerning(4)
             .lineSpacing(2.5)
+            .frame(maxWidth: .infinity, alignment: alignment)
     }
 
     // ゆったりと
-    func relaxedly() -> some View {
+    func relaxedly(alignment: Alignment = .leading) -> some View {
         self
             .kerning(1.4)
             .lineSpacing(2)
+            .frame(maxWidth: .infinity, alignment: alignment)
     }
 
     // きちんと
@@ -73,10 +75,11 @@ public extension Text {
     }
 
     // しっかりだけど詰め気味
-    func tightly() -> some View {
+    func tightly(alignment: Alignment = .leading) -> some View {
         self
         .kerning(-0.2)
         .lineSpacing(1.1)
+        .frame(maxWidth: .infinity, alignment: alignment)
         //.lineLimit(2)
         //.lineSpacing(2)
         //.minimumScaleFactor(0.5)
