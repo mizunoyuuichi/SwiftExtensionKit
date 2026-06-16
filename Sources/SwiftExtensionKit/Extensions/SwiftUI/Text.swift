@@ -127,29 +127,133 @@ public extension Text {
 #Preview {
     let a: String = "日替わりセール 2026/06/15 このあのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。"
 
-    VStack(alignment: .leading, spacing: 16) {
-        Text(a + "　[asHead, airily]")
-            .asHead().airily()
+    ScrollView {
+        VStack(alignment: .leading, spacing: 16) {
+            Text(a + "　[asHead, airily]")
+                .asHead().airily()
 
-        Text(a + "　[asLabel, formally]")
-            .asLabel().formally()
+            Text(a + "　[asLabel, formally]")
+                .asLabel().formally()
 
-        Text(a + "　[asBody, relaxedly]")
-            .asBody().relaxedly()
+            Text(a + "　[asBody, relaxedly]")
+                .asBody().relaxedly()
 
-        Text(a + "　[asBody, formally]")
-            .asBody().formally()
+            Text(a + "　[asBody, formally]")
+                .asBody().formally()
 
-        Text(a + "　[asCaption, formally]")
-            .asCaption().formally()
+            Text(a + "　[asCaption, formally]")
+                .asCaption().formally()
 
 
-        Text(a + "　[asFootnote, tightly]")
-            .asFootnote().tightly()
+            Text(a + "　[asFootnote, tightly]")
+                .asFootnote().tightly()
 
-        Text("\(Image(systemName: "questionmark.circle")) シーズンのランクについて")
-            .asDetailLink(isGuideGray: true).formally(alignment: .trailing)
+            Text("\(Image(systemName: "questionmark.circle")) シーズンのランクについて")
+                .asDetailLink(isGuideGray: true).formally(alignment: .trailing)
+        }
+        .padding(.horizontal, 24)
+
+
+        GeometryReader {
+            let width80 = $0.size.width * 0.8
+            let width40 = $0.size.width * 0.4
+            let width20 = $0.size.width * 0.2
+            HStack {
+                Spacer()
+                VStack(spacing: 8) {
+
+                    Text("シーズンのランク")
+                        .asBody().airily(alignment: .center)
+
+                    HStack {
+                        Circle()
+                            .foregroundStyle(Color.k30)
+                            .frame(width: 60, height: 60)
+                        Text("ミシック・チャンピオン")
+                            .asHead().airily()
+                    }
+
+                    HStack(alignment: .lastTextBaseline) {
+                        Text("前シーズンの順位")
+                            .asCaption().formally().nowrap()
+                        Spacer()
+                        Text("\(Text("XAX").asHead().bold()) 位")
+                            .asBody().formally(alignment: .trailing)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.horizontal)
+
+                    HStack(alignment: .lastTextBaseline) {
+                        Text("前シーズンの獲得ポイント")
+                            .asCaption().formally().nowrap()
+                        Spacer()
+                        Text("\(Text("XX").asHead().bold()) 円")
+                            .asBody().formally(alignment: .trailing)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.horizontal)
+
+
+                    Divider()
+                        .padding(.vertical, 8)
+
+                    HStack(alignment: .firstTextBaseline) {
+                        Text("今シーズンの順位")
+                            .asCaption().formally().nowrap()
+                        Spacer()
+                        Text("\(Text("AX").asHead().bold()) 位")
+                            .asBody().formally(alignment: .trailing)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.horizontal)
+
+                    HStack(alignment: .lastTextBaseline) {
+                        Text("来シーズンの開始ランク")
+                            .asCaption().formally().nowrap()
+                        Spacer()
+                        Text("ミシック・チャンピオン")
+                            .asHead().bold().nowrap(minimumScaleFactor: 0.7)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.horizontal)
+
+
+                    ZStack(alignment: .topLeading) {
+                        Capsule()
+                            .fill(Color.gray.opacity(0.2))
+                            .frame(width: width80)
+                            .frame(height: 32)
+                        Capsule()
+                            .fill(Color.gray.opacity(0.4))
+                            .frame(width: width40)
+                            .frame(height: 32)
+                        Capsule()
+                            .fill(Color.purple.opacity(0.4))
+                            .frame(width: width20)
+                            .frame(height: 32)
+                    }
+                    .padding(.vertical)
+
+
+
+
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("\(Text("⚫︎").asHead()) 今シーズンの獲得ポイント　\(Text("XX").asBody().bold())")
+                            .asCaption().formally().leading()
+                    }
+                    .padding(.horizontal)
+
+                    Text("(対戦中のポイントを除く)")
+                        .asFootnote().formally().trailing()
+                    Text("\(Image(systemName: "questionmark.circle")) シーズンランクについて")
+                        .asDetailLink(isGuideGray: true).formally().trailing()
+                }
+                .frame(width: width80)
+                Spacer()
+            }
+        }
+        .frame(maxWidth: .infinity)
+
     }
-    .padding(.horizontal, 24)
 
 }
