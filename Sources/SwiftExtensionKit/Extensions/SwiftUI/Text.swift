@@ -154,105 +154,105 @@ public extension Text {
         .padding(.horizontal, 24)
 
 
-        GeometryReader {
-            let width80 = $0.size.width * 0.8
-            let width40 = $0.size.width * 0.4
-            let width20 = $0.size.width * 0.2
+        VStack(spacing: 8) {
+
+            Text("シーズンのランク")
+                .asBody().airily(alignment: .center)
+
             HStack {
-                Spacer()
-                VStack(spacing: 8) {
-
-                    Text("シーズンのランク")
-                        .asBody().airily(alignment: .center)
-
-                    HStack {
-                        Circle()
-                            .foregroundStyle(Color.k30)
-                            .frame(width: 60, height: 60)
-                        Text("ミシック・チャンピオン")
-                            .asHead().airily()
-                    }
-
-                    HStack(alignment: .lastTextBaseline) {
-                        Text("前シーズンの順位")
-                            .asCaption().formally().nowrap()
-                        Spacer()
-                        Text("\(Text("XAX").asHead().bold()) 位")
-                            .asBody().formally(alignment: .trailing)
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding(.horizontal)
-
-                    HStack(alignment: .lastTextBaseline) {
-                        Text("前シーズンの獲得ポイント")
-                            .asCaption().formally().nowrap()
-                        Spacer()
-                        Text("\(Text("XX").asHead().bold()) 円")
-                            .asBody().formally(alignment: .trailing)
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding(.horizontal)
-
-
-                    Divider()
-                        .padding(.vertical, 8)
-
-                    HStack(alignment: .firstTextBaseline) {
-                        Text("今シーズンの順位")
-                            .asCaption().formally().nowrap()
-                        Spacer()
-                        Text("\(Text("AX").asHead().bold()) 位")
-                            .asBody().formally(alignment: .trailing)
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding(.horizontal)
-
-                    HStack(alignment: .lastTextBaseline) {
-                        Text("来シーズンの開始ランク")
-                            .asCaption().formally().nowrap()
-                        Spacer()
-                        Text("ミシック・チャンピオン")
-                            .asHead().bold().nowrap(minimumScaleFactor: 0.7)
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding(.horizontal)
-
-
-                    ZStack(alignment: .topLeading) {
-                        Capsule()
-                            .fill(Color.gray.opacity(0.2))
-                            .frame(width: width80)
-                            .frame(height: 32)
-                        Capsule()
-                            .fill(Color.gray.opacity(0.4))
-                            .frame(width: width40)
-                            .frame(height: 32)
-                        Capsule()
-                            .fill(Color.purple.opacity(0.4))
-                            .frame(width: width20)
-                            .frame(height: 32)
-                    }
-                    .padding(.vertical)
-
-
-
-
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("\(Text("⚫︎").asHead()) 今シーズンの獲得ポイント　\(Text("XX").asBody().bold())")
-                            .asCaption().formally().leading()
-                    }
-                    .padding(.horizontal)
-
-                    Text("(対戦中のポイントを除く)")
-                        .asFootnote().formally().trailing()
-                    Text("\(Image(systemName: "questionmark.circle")) シーズンランクについて")
-                        .asDetailLink(isGuideGray: true).formally().trailing()
-                }
-                .frame(width: width80)
-                Spacer()
+                Circle()
+                    .foregroundStyle(Color.k30)
+                    .frame(width: 60, height: 60)
+                Text("ミシック・チャンピオン")
+                    .asHead().airily()
             }
+
+            HStack(alignment: .lastTextBaseline) {
+                Text("前シーズンの順位")
+                    .asCaption().formally().nowrap()
+                Spacer()
+                Text("\(Text("XAX").asHead().bold()) 位")
+                    .asBody().formally(alignment: .trailing)
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.horizontal)
+
+            HStack(alignment: .lastTextBaseline) {
+                Text("前シーズンの獲得ポイント")
+                    .asCaption().formally().nowrap()
+                Spacer()
+                Text("\(Text("XX").asHead().bold()) 円")
+                    .asBody().formally(alignment: .trailing)
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.horizontal)
+
+
+            Divider()
+                .padding(.vertical, 8)
+
+            HStack(alignment: .firstTextBaseline) {
+                Text("今シーズンの順位")
+                    .asCaption().formally().nowrap()
+                Spacer()
+                Text("\(Text("AX").asHead().bold()) 位")
+                    .asBody().formally(alignment: .trailing)
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.horizontal)
+
+            HStack(alignment: .lastTextBaseline) {
+                Text("来シーズンの開始ランク")
+                    .asCaption().formally().nowrap()
+                Spacer()
+                Text("ミシック・チャンピオン")
+                    .asHead().bold().nowrap(minimumScaleFactor: 0.7)
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.horizontal)
+
+
+            ZStack(alignment: .topLeading) {
+                GeometryReader {
+                    Capsule()
+                        .fill(Color.gray.opacity(0.2))
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 32)
+                    Capsule()
+                        .fill(Color.gray.opacity(0.4))
+                        .frame(width: $0.size.width * 0.5)
+                        .frame(height: 32)
+                    Capsule()
+                        .fill(Color.purple.opacity(0.4))
+                        .frame(width: $0.size.width * 0.2)
+                        .frame(height: 32)
+                }
+
+            }
+            .overlay{
+                Capsule()
+                    .fill(Color.clear)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 32)
+                    .allowsHitTesting(false)
+            }
+            .padding()
+
+
+
+
+            VStack(alignment: .leading, spacing: 4) {
+                Text("\(Text("⚫︎").asHead()) 今シーズンの獲得ポイント　\(Text("XX").asBody().bold())")
+                    .asCaption().formally().leading()
+            }
+            .padding(.horizontal)
+
+            Text("(対戦中のポイントを除く)")
+                .asFootnote().formally().trailing()
+            Text("\(Image(systemName: "questionmark.circle")) シーズンランクについて")
+                .asDetailLink(isGuideGray: true).formally().trailing()
         }
-        .frame(maxWidth: .infinity)
+
 
     }
 
