@@ -65,7 +65,6 @@ public extension Text {
         self
             .kerning(1.4)
             .lineSpacing(2)
-            //.frame(maxWidth: .infinity, alignment: alignment)
             .multilineTextAlignment(alignment)
     }
 
@@ -74,7 +73,6 @@ public extension Text {
         self
             .kerning(-0.4)
             .lineSpacing(1.3)
-            //.frame(maxWidth: .infinity, alignment: alignment)
             .multilineTextAlignment(alignment)
     }
 
@@ -83,11 +81,7 @@ public extension Text {
         self
         .kerning(-0.2)
         .lineSpacing(1.1)
-        //.frame(maxWidth: .infinity, alignment: alignment)
         .multilineTextAlignment(alignment)
-//        .lineLimit(2)
-        //.lineSpacing(2)
-        //.minimumScaleFactor(0.5)
     }
 }
 
