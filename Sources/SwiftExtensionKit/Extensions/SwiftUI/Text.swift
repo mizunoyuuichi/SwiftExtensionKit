@@ -24,7 +24,7 @@ public extension Text {
             .foregroundStyle(Color.k70)
     }
     /// 補足
-    func asCaption(isStraightLine: Bool = false, alignment: Alignment = .leading) -> Text {
+    func asCaption() -> Text {
         self
             .font(.system(size: 14, weight: .light))
             .foregroundColor(.k50)
@@ -51,41 +51,65 @@ public extension Text {
     /// 基本4つ { airily, relaxedly, formally, tightly }
 
     // 軽やかに
-    func airily(alignment: Alignment = .leading) -> some View {
+    func airily(alignment: TextAlignment = .leading) -> some View {
         self
             .kerning(4)
             .lineSpacing(2.5)
-            .frame(maxWidth: .infinity, alignment: alignment)
+            //.frame(maxWidth: .infinity, alignment: alignment)
+            //.frame(alignment: alignment)
+            .multilineTextAlignment(alignment)
     }
 
     // ゆったりと
-    func relaxedly(alignment: Alignment = .leading) -> some View {
+    func relaxedly(alignment: TextAlignment = .leading) -> some View {
         self
             .kerning(1.4)
             .lineSpacing(2)
-            .frame(maxWidth: .infinity, alignment: alignment)
+            //.frame(maxWidth: .infinity, alignment: alignment)
+            .multilineTextAlignment(alignment)
     }
 
     // きちんと
-    func formally(alignment: Alignment = .leading) -> some View {
+    func formally(alignment: TextAlignment = .leading) -> some View {
         self
             .kerning(-0.4)
             .lineSpacing(1.3)
-            .frame(maxWidth: .infinity, alignment: alignment)
+            //.frame(maxWidth: .infinity, alignment: alignment)
+            .multilineTextAlignment(alignment)
     }
 
     // しっかりだけど詰め気味
-    func tightly(alignment: Alignment = .leading) -> some View {
+    func tightly(alignment: TextAlignment = .leading) -> some View {
         self
         .kerning(-0.2)
         .lineSpacing(1.1)
-        .frame(maxWidth: .infinity, alignment: alignment)
-        //.lineLimit(2)
+        //.frame(maxWidth: .infinity, alignment: alignment)
+        .multilineTextAlignment(alignment)
+//        .lineLimit(2)
         //.lineSpacing(2)
         //.minimumScaleFactor(0.5)
     }
 }
 
+
+// MARK: - style
+public extension View {
+
+    func nowrap(_ lineLimit: Int? = 1, minimumScaleFactor: CGFloat? = 0.8) -> some View {
+        self
+            .lineLimit(lineLimit).minimumScaleFactor(minimumScaleFactor ?? 1)
+    }
+
+    func leading() -> some View {
+        self
+            .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    func trailing() -> some View {
+        self
+            .frame(maxWidth: .infinity, alignment: .trailing)
+    }
+}
 
 
 
