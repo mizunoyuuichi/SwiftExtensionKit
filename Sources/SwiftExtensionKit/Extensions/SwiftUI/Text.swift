@@ -27,20 +27,20 @@ public extension Text {
     func asCaption() -> Text {
         self
             .font(.system(size: 14, weight: .light))
-            .foregroundColor(.k50)
+            .foregroundStyle(Color.k50)
     }
     /// 最小の注釈
     func asFootnote(isStraightLine: Bool = false, alignment: Alignment = .leading) -> Text {
         self
             .font(.system(size: 12, weight: .thin))
-            .foregroundColor(.k40)
+            .foregroundStyle(Color.k40)
     }
 
     // MARK: 特殊系
     func asDetailLink(isActive: Bool = true, alignment: Alignment = .leading, isGuideGray: Bool = false) -> Text {
         self
             .font(.system(size: isGuideGray ? 14 : 10, weight: .medium))
-            .foregroundColor(isGuideGray ? Color.k50 : .blue)
+            .foregroundStyle(isGuideGray ? Color.k50 : .blue)
     }
 }
 
@@ -128,6 +128,7 @@ public extension Text {
     let a: String = "日替わりセール 2026/06/15 このあのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。"
 
     ScrollView {
+
         VStack(alignment: .leading, spacing: 16) {
             Text(a + "　[asHead, airily]")
                 .asHead().airily()
@@ -152,6 +153,28 @@ public extension Text {
                 .asDetailLink(isGuideGray: true).formally(alignment: .trailing)
         }
         .padding(.horizontal, 24)
+
+
+
+        LazyVGrid(
+            columns: Array(repeating: GridItem(), count: 1),
+            spacing: 12
+        ) {
+            Text("ABCD EFGH IJKL MNOP QRFT UWXY Z")//.asCaption().tightly().leading()
+                .fixedSize(horizontal: true, vertical: false)
+                .shearY(.degrees(-30))
+                .offset(x: 120)
+        }
+        .frame(width: 44)
+        .frame(maxHeight: .infinity)
+        .padding()
+        .background{
+            RoundedRectangle(cornerRadius: 16)
+                .fill(.ultraThinMaterial)
+                .environment(\.colorScheme, .dark)
+                .shearY(.degrees(-30))
+        }
+
 
 
         VStack(spacing: 8) {
@@ -249,7 +272,6 @@ public extension Text {
             Text("\(Image(systemName: "questionmark.circle")) シーズンランクについて")
                 .asDetailLink(isGuideGray: true).formally().trailing()
         }
-
 
     }
 
