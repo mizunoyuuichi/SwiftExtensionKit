@@ -175,7 +175,7 @@ public extension Text {
                     .asBody().formally(alignment: .trailing)
             }
             .frame(maxWidth: .infinity)
-            .padding(.horizontal)
+            .padding(.horizontal, 32)
 
             HStack(alignment: .lastTextBaseline) {
                 Text("前シーズンの獲得ポイント")
@@ -185,7 +185,7 @@ public extension Text {
                     .asBody().formally(alignment: .trailing)
             }
             .frame(maxWidth: .infinity)
-            .padding(.horizontal)
+            .padding(.horizontal, 32)
 
 
             Divider()
@@ -199,7 +199,7 @@ public extension Text {
                     .asBody().formally(alignment: .trailing)
             }
             .frame(maxWidth: .infinity)
-            .padding(.horizontal)
+            .padding(.horizontal, 32)
 
             HStack(alignment: .lastTextBaseline) {
                 Text("来シーズンの開始ランク")
@@ -209,7 +209,7 @@ public extension Text {
                     .asHead().bold().nowrap(minimumScaleFactor: 0.7)
             }
             .frame(maxWidth: .infinity)
-            .padding(.horizontal)
+            .padding(.horizontal, 32)
 
 
             ZStack(alignment: .topLeading) {
@@ -227,7 +227,6 @@ public extension Text {
                         .frame(width: $0.size.width * 0.2)
                         .frame(height: 32)
                 }
-
             }
             .overlay{
                 Capsule()
@@ -238,14 +237,12 @@ public extension Text {
             }
             .padding()
 
-
-
-
             VStack(alignment: .leading, spacing: 4) {
                 Text("\(Text("⚫︎").asHead()) 今シーズンの獲得ポイント　\(Text("XX").asBody().bold())")
                     .asCaption().formally().leading()
             }
-            .padding(.horizontal)
+            .padding(.horizontal, 32)
+            .padding(.vertical, 16)
 
             Text("(対戦中のポイントを除く)")
                 .asFootnote().formally().trailing()
