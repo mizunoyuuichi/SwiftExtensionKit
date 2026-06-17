@@ -6,6 +6,22 @@ import SwiftUI
 // MARK: - style
 public extension View {
 
+    func `if`<T: View>(_ condition: Bool,
+                       _ effect: ((any View)-> (some View)) ) -> some View {
+        if condition {
+            effect(self)
+        }
+        else {
+            self
+        }
+    }
+}
+
+
+
+// MARK: - style
+public extension View {
+
     func paddingLeftAround() -> some View {
         padding([.top, .leading, .bottom], 12)
     }
