@@ -157,13 +157,12 @@ public extension Text {
 
 
         LazyVGrid(
-            columns: Array(repeating: GridItem(), count: 1),
+            columns: Array(repeating: GridItem(.flexible(), alignment: .leading), count: 1),
             spacing: 12
         ) {
-            Text("ABCD EFGH IJKL MNOP QRFT UWXY Z")//.asCaption().tightly().leading()
+            Text("ABCD EFGH IJKL MNOP QRFT UWXY Z").asCaption().tightly().leading()
                 .fixedSize(horizontal: true, vertical: false)
                 .shearY(.degrees(-30))
-                .offset(x: 120)
         }
         .frame(width: 44)
         .frame(maxHeight: .infinity)
