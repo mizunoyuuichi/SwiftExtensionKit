@@ -6,15 +6,15 @@ import SwiftUI
 // MARK: - style
 public extension View {
 
-    func `if`<T: View>(_ condition: Bool,
-                       _ effect: ((any View)-> (some View)) ) -> some View {
-        if condition {
-            effect(self)
-        }
-        else {
-            self
-        }
-    }
+//    func `if`<T: View>(_ condition: Bool,
+//                       _ effect: ((any View)-> (some View)) ) -> some View {
+//        if condition {
+//            effect(self)
+//        }
+//        else {
+//            self
+//        }
+//    }
 }
 
 
