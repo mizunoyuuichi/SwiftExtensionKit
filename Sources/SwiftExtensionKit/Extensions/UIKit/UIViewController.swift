@@ -9,4 +9,10 @@ public extension UIViewController {
         view.addSubviewWithConstraintAround(child.view)
         child.didMove(toParent: self)
     }
+    
+    /// モーダルdismiss時の 連続タップ防止策
+    var isStillDisplayingInModal: Bool {
+        view.window != nil && presentingViewController != nil && isBeingDismissed == false
+    }
+
 }
