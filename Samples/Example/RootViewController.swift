@@ -28,6 +28,6 @@ extension RootViewController {
 
     private func initialize() {
         // 本当はリストから選べるようにしていく　今は一旦
-        view.addSubviewWithConstraintAround(AnimationNumberView.buildOnViewController().view)
+        view.addSubviewWithConstraintAround(CountupNumberView.buildOnViewController().view)
     }
 }
