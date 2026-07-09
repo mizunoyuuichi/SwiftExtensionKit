@@ -1,8 +1,8 @@
 import Foundation
 
-let kServerDateTimeFormat = String("yyyy-MM-dd'T'HH:mm:ss.SSSZZZZ")
+let kServerDateTimeFormat      = String("yyyy-MM-dd'T'HH:mm:ss.SSSZZZZ")
 let kDateTimeOmitSecondsFormat = String("yyyy/MM/dd HH:mm")
-let kDateFormat = String("yyyy-MM-dd")
+let kDateFormat                = String("yyyy-MM-dd")
 
 public extension DateFormatter {
 
@@ -29,5 +29,4 @@ public extension DateFormatter {
     func dateFormat() -> DateFormatter {
         return set(dateFormat: kDateFormat)
     }
-
 }
