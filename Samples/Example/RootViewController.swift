@@ -31,7 +31,7 @@ extension RootViewController {
         //view.addSubviewWithConstraintAround(CountupNumberView.buildOnViewController().view)
         //view.addSubviewWithConstraintAround(InputSheetExample.buildOnViewController().view)
         //view.addSubviewWithConstraintAround(CenteredPopupExample.buildOnViewController().view)
-        //view.addSubviewWithConstraintAround(ControlPartsExample.buildOnViewController().view)
-        view.addSubviewWithConstraintAround(BottomDockMenuExample.buildOnViewController().view)
+        //view.addSubviewWithConstraintAround(BottomDockMenuExample.buildOnViewController().view)
+        view.addSubviewWithConstraintAround(ControlPartsExample.buildOnViewController().view)
     }
 }
