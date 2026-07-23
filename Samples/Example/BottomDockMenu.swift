@@ -53,6 +53,7 @@ struct BottomDockMenu: View {
     @State private var isAppear = false
     private let kGestureHeight: CGFloat = 50
     private let kDockHeight   : CGFloat = 100
+    private let kDockCornerRadius: CGFloat = 36
     private let kDockHiddenOffset: CGFloat = 240
     private let dockAnimation = Animation.interpolatingSpring(stiffness: 260, damping: 28)
 
@@ -70,9 +71,9 @@ struct BottomDockMenu: View {
                 }
                 .frame(maxWidth: .infinity)
                 .frame(height: kDockHeight)
-                .background(Color.blue.opacity(0.9))
-                .clipShape(RoundedRectangle(cornerRadius: 36, style: .continuous))
-                .shadow(color: .black.opacity(0.18), radius: 16, y: -4)
+                .dockGlassBackground(cornerRadius: kDockCornerRadius)
+                .clipShape(RoundedRectangle(cornerRadius: kDockCornerRadius, style: .continuous))
+                .shadow(color: .black.opacity(0.18), radius: 16, y: 4)
                 .padding(.horizontal, 16)
                 .padding(.bottom, 16)
                 .contentShape(Rectangle())
@@ -100,6 +101,28 @@ struct BottomDockMenu: View {
     private func toggleDock() {
         withAnimation(dockAnimation) {
             isAppear.toggle()
+        }
+    }
+}
+
+
+
+// MARK: - private
+private extension View {
+
+    @ViewBuilder
+    func dockGlassBackground(cornerRadius: CGFloat) -> some View {
+        if #available(iOS 26.0, *) {
+            glassEffect(.regular, in: .rect(cornerRadius: cornerRadius))
+        } else {
+            background(
+                .ultraThinMaterial,
+                in: RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+            )
+            .overlay {
+                RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                    .stroke(.white.opacity(0.25), lineWidth: 1)
+            }
         }
     }
 }
