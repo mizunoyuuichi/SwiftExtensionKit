@@ -54,6 +54,23 @@ public extension View {
 			}
 		}
 	}
+
+    /// 背景半透明
+    @ViewBuilder
+    public func dockGlassBackground(cornerRadius: CGFloat) -> some View {
+        if #available(iOS 26.0, *) {
+            glassEffect(.regular, in: .rect(cornerRadius: cornerRadius))
+        } else {
+            background(
+                .ultraThinMaterial,
+                in: RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+            )
+            .overlay {
+                RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                    .stroke(.white.opacity(0.25), lineWidth: 1)
+            }
+        }
+    }
 }
 
 
