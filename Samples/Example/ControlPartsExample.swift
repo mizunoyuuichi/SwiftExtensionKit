@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftExtensionKit
 
 struct ControlPartsExample: View {
     var body: some View {
@@ -7,35 +8,31 @@ struct ControlPartsExample: View {
             VolumeSnapSlider()
         }
     }
+}
 
 
-    struct SnapSlider: View {
-        @State private var volume: Double = 5
 
-        var body: some View {
-            Slider(
-                value: $volume,
-                in: 0...10,
-                step: 1
-            )
-        }
+struct VolumeSnapSlider: View {
+    @State private var volume: Double = 5
+    @State private var step  : Double = 1
+
+    init(volume: Double = 5,
+         step  : Double = 1) {
+        self.volume = volume
+        self.step   = step
     }
 
-    struct VolumeSnapSlider: View {
-        @State private var volume: Double = 5
-
-        var body: some View {
-            Slider(
-                value: $volume,
-                in: 0...10,
-                step: 1
-            ) {
-                Text("音量")
-            } minimumValueLabel: {
-                Image(systemName: "speaker.fill")
-            } maximumValueLabel: {
-                Image(systemName: "speaker.wave.3.fill")
-            }
+    var body: some View {
+        Slider(
+            value: $volume,
+            in: 0...10,
+            step: step
+        ) {
+            Text("音量")
+        } minimumValueLabel: {
+            Image(systemName: "speaker.fill")
+        } maximumValueLabel: {
+            Image(systemName: "speaker.wave.3.fill")
         }
     }
 }
