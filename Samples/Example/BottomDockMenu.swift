@@ -51,7 +51,7 @@ extension BottomDockMenuExample {
 struct BottomDockMenu: View {
 
     @State private var isAppear = false
-    private let kGestureHeight: CGFloat = 30
+    private let kGestureHeight: CGFloat = 50
     private let kDockHeight   : CGFloat = 100
     private let kDockHiddenOffset: CGFloat = 240
     private let dockAnimation = Animation.interpolatingSpring(stiffness: 260, damping: 28)
