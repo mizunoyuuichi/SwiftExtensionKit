@@ -10,7 +10,9 @@ struct BottomDockMenuExample: View {
         // 背面の他View（コントロール類）の上に、リビール機構を重ねる
         ZStack(alignment: .bottom) {
             DemoBackground()          // 既存の画面（ボタン・スライダ等）
-            BottomDockMenu()     // 最前面の開閉機構
+            BottomDockMenu{
+                Text("パネル（高さ100px）").font(.headline)
+            }
         }
     }
 }
@@ -47,8 +49,10 @@ extension BottomDockMenuExample {
 }
 
 
+//struct HStack<Content> : View where Content : View {
+struct BottomDockMenu<Content> : View where Content : View {
 
-struct BottomDockMenu: View {
+    private let innerView: Content
 
     @State private var isAppear = false
     private let kGestureHeight: CGFloat = 50
@@ -56,6 +60,10 @@ struct BottomDockMenu: View {
     private let kDockCornerRadius: CGFloat = 36
     private let kDockHiddenOffset: CGFloat = 240
     private let dockAnimation = Animation.interpolatingSpring(stiffness: 260, damping: 28)
+
+    init(@ViewBuilder content: () -> Content) {
+        self.innerView = content()
+    }
 
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -67,7 +75,8 @@ struct BottomDockMenu: View {
                     .onTapGesture { toggleDock() }
 
                 VStack {
-                    Text("パネル（高さ100px）").font(.headline)
+                    innerView
+                    //
                 }
                 .frame(maxWidth: .infinity)
                 .frame(height: kDockHeight)
@@ -130,5 +139,7 @@ private extension View {
 
 
 #Preview {
-    BottomDockMenu()
+    BottomDockMenu{
+        Text("パネル（高さ100px）").font(.headline)
+    }
 }
