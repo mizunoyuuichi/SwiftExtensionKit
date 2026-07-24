@@ -5,7 +5,7 @@ public struct BottomDockMenu<Content> : View where Content : View {
     public let innerView: Content
 
     @State private var isAppear = false
-    private let kGestureHeight: CGFloat = 50
+    private let kGestureHeight: CGFloat = 70
     private let kDockHeight   : CGFloat = 100
     private let kDockCornerRadius: CGFloat = 36
     private let kDockHiddenOffset: CGFloat = 240
