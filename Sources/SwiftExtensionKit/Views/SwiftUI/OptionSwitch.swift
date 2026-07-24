@@ -5,14 +5,21 @@ import SwiftUI
 
 
 public struct OptionSwitch<T: CaseIterable & hasDescription & hasIconName & Hashable> : View {
-    var current: T
-    var selected: ((T)->Void)?
+    @Binding private var current  : T
+
+    public var onChanged  : ((T)->Void)?
+
+    public init(current   : Binding<T>,
+                onChanged : ((T)->Void)? = nil) {
+        self._current  = current
+        self.onChanged = onChanged
+    }
 
     public var body: some View {
         Menu {
             ForEach(Array(T.allCases), id: \.self) { item in
                 Button {
-                    selected?(item)
+                    onChanged?(item)
                 } label: {
                     Text(item.description)
                     if item == current {
