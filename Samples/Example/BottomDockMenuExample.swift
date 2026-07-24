@@ -9,7 +9,7 @@ struct BottomDockMenuExample: View {
         // 背面の他View（コントロール類）の上に、リビール機構を重ねる
         ZStack(alignment: .bottom) {
             DemoBackground()          // 既存の画面（ボタン・スライダ等）
-            BottomDockMenu{
+            BottomDock{
                 Text("パネル（高さ100px）").font(.headline)
             }
         }
@@ -53,7 +53,7 @@ extension BottomDockMenuExample {
 #Preview {
     ZStack(alignment: .bottom) {
         Text("メインのコンテンツ").font(.headline)
-        BottomDockMenu{
+        BottomDock{
             Text("パネル（高さ100px）").font(.headline)
         }
     }
