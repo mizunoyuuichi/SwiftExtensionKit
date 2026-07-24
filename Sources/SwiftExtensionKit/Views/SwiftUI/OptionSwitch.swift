@@ -44,4 +44,3 @@ public struct OptionSwitch<T: CaseIterable & hasDescription & hasIconName & Hash
                 radius: 1, x: 0, y: 1)
     }
 }
-¥
