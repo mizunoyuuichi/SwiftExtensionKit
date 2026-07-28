@@ -5,9 +5,9 @@ import SwiftUI
 
 
 public struct OptionSwitch<T: CaseIterable & hasDescription & hasIconName & Hashable> : View {
-    @Binding private var current  : T
+    @Binding private var current : T
 
-    public var onChanged  : ((T)->Void)?
+    public var onChanged : ((T)->())?
 
     public init(current   : Binding<T>,
                 onChanged : ((T)->Void)? = nil) {
@@ -17,12 +17,12 @@ public struct OptionSwitch<T: CaseIterable & hasDescription & hasIconName & Hash
 
     public var body: some View {
         Menu {
-            ForEach(Array(T.allCases), id: \.self) { item in
+            ForEach(Array(T.allCases), id: \.self) { e in
                 Button {
-                    onChanged?(item)
+                    onChanged?(e)
                 } label: {
-                    Text(item.description)
-                    if item == current {
+                    Text(e.description)
+                    if e == current {
                         Image(systemName: "checkmark")
                     }
                 }
@@ -51,3 +51,59 @@ public struct OptionSwitch<T: CaseIterable & hasDescription & hasIconName & Hash
                 radius: 1, x: 0, y: 1)
     }
 }
+
+
+private enum OptionSwitchPreviewMode: CaseIterable, hasDescription, hasIconName {
+    case all
+    case favorites
+    case recent
+
+    var description: String {
+        switch self {
+        case .all:
+            "All"
+        case .favorites:
+            "Favorites"
+        case .recent:
+            "Recent"
+        }
+    }
+
+    var iconName: String {
+        switch self {
+        case .all:
+            "square.grid.2x2"
+        case .favorites:
+            "star"
+        case .recent:
+            "clock"
+        }
+    }
+}
+
+
+
+private struct OptionSwitchPreview: View {
+    @State private var current: OptionSwitchPreviewMode = .all
+
+    var body: some View {
+        VStack(spacing: 16) {
+            OptionSwitch(current: $current) { selected in
+                current = selected
+            }
+
+            Text(current.description)
+                .font(.caption)
+                .foregroundStyle(Color.k50)
+        }
+        .padding(24)
+        .background(Color.k4)
+    }
+}
+
+
+
+#Preview {
+    OptionSwitchPreview()
+}
+
