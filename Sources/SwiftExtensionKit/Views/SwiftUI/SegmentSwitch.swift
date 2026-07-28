@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-struct SegmentSwitch<T: CaseIterable & hasDescription & hasIconName & Hashable>: View {
+public struct SegmentSwitch<T: CaseIterable & hasDescription & hasIconName & Hashable>: View {
 
     @Binding private var current : T
     // NOTE: アイコンとタイトルの混在が推奨されておらず テキストのみになる
@@ -20,7 +20,7 @@ struct SegmentSwitch<T: CaseIterable & hasDescription & hasIconName & Hashable>:
         }
     }
 
-    var body: some View {
+    public var body: some View {
         Picker("segmented", selection: $current) {
             ForEach(Array(T.allCases), id: \.self) { e in
                 Label(e.description, systemImage: e.iconName)
@@ -33,12 +33,12 @@ struct SegmentSwitch<T: CaseIterable & hasDescription & hasIconName & Hashable>:
 }
 
 // MARK: - プレビュー用のサンプル enum
-enum SampleTab: CaseIterable, hasDescription, hasIconName, Hashable {
+public enum SampleTab: CaseIterable, hasDescription, hasIconName, Hashable {
     case list
     case grid
     case map
 
-    var description: String {
+    public var description: String {
         switch self {
         case .list: return "リスト"
         case .grid: return "グリッド"
@@ -46,7 +46,7 @@ enum SampleTab: CaseIterable, hasDescription, hasIconName, Hashable {
         }
     }
 
-    var iconName: String {
+    public var iconName: String {
         switch self {
         case .list: return "list.bullet"
         case .grid: return "square.grid.2x2"
