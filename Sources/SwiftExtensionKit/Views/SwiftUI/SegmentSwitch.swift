@@ -21,7 +21,23 @@ public struct SegmentSwitch<T: CaseIterable & hasDescription & hasIconName & Has
     }
 
     public var body: some View {
-        Picker("segmented", selection: $current) {
+        Picker(
+            "segmented",
+            selection: Binding(
+                get: { current },
+                set: { newValue in
+                    if onChanged != nil {
+                        onChanged?(newValue)
+                    }
+                    else {
+                        current = newValue
+                    }
+                    //withAnimation(.smooth(duration: 0.25, extraBounce: 0.0)) {
+                    //
+                    //}
+                }
+            )
+        ) {
             ForEach(Array(T.allCases), id: \.self) { e in
                 Label(e.description, systemImage: e.iconName)
                     .labelStyle(style)
