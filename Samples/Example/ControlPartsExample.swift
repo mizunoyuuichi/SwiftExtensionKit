@@ -2,10 +2,41 @@ import SwiftUI
 import SwiftExtensionKit
 
 struct ControlPartsExample: View {
+
+    @State private var selection = 0
+    let options = ["A", "B", "C"]
+
     var body: some View {
         VStack {
             SnapSlider()
             VolumeSnapSlider()
+
+            Form {
+                Picker("segmented", selection: $selection) {
+                    ForEach(0..<options.count, id: \.self) { Text(options[$0]) }
+                }
+                .pickerStyle(.segmented)
+
+                Picker("menu", selection: $selection) {
+                    ForEach(0..<options.count, id: \.self) { Text(options[$0]) }
+                }
+                .pickerStyle(.menu)
+
+                Picker("wheel", selection: $selection) {
+                    ForEach(0..<options.count, id: \.self) { Text(options[$0]) }
+                }
+                .pickerStyle(.wheel)
+
+                Picker("inline", selection: $selection) {
+                    ForEach(0..<options.count, id: \.self) { Text(options[$0]) }
+                }
+                .pickerStyle(.inline)
+
+                Picker("navigationLink", selection: $selection) {
+                    ForEach(0..<options.count, id: \.self) { Text(options[$0]) }
+                }
+                .pickerStyle(.navigationLink)
+            }
         }
     }
 }
