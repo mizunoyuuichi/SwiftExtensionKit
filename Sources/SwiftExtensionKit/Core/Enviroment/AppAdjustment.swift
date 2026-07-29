@@ -27,5 +27,5 @@ public class AppAdjustment  {
 }
 
 public extension EnvironmentValues {
-    @Entry var appAdjustment: AppAdjustment = AppAdjustment()
+    @Entry public var appAdjustment: AppAdjustment = AppAdjustment()
 }
