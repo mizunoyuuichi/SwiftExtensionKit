@@ -8,6 +8,7 @@ public struct SegmentSwitch<T: CaseIterable & hasDescription & hasIconName & Has
     // NOTE: アイコンとタイトルの混在が推奨されておらず テキストのみになる
     @State private var style : TitleAndIconLabelStyle = .titleAndIcon
 
+    // NOTICE: コールバックを設定すると呼ばれるようになっています。変更時アニメーションさせたい時に利用可能
     public var onChanged : ((T)->())?
 
     public init(current   : Binding<T>,
@@ -32,9 +33,6 @@ public struct SegmentSwitch<T: CaseIterable & hasDescription & hasIconName & Has
                     else {
                         current = newValue
                     }
-                    //withAnimation(.smooth(duration: 0.25, extraBounce: 0.0)) {
-                    //
-                    //}
                 }
             )
         ) {
