@@ -1,16 +1,16 @@
 import SwiftUI
 
 public struct SnapSlider: View {
-    @State private var current : Double
+    @Binding private var current : Double
     @State private var max     : Double
     @State private var step    : Double
 
     public var onChanged: ((Double) -> Void)?
 
-    public init(current: Double = 5,
+    public init(current: Binding<Double>,
                 max  : Double = 10,
                 step : Double = 1) {
-        self.current = current
+        self._current = current
         self.max     = max
         self.step    = step
     }
@@ -28,5 +28,7 @@ public struct SnapSlider: View {
 }
 
 #Preview {
-    SnapSlider()
+    @Previewable @State var sampleDouble: Double = 0.5
+
+    SnapSlider(current: $sampleDouble, max: 1, step: 0.1)
 }
