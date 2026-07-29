@@ -23,7 +23,7 @@ import SwiftUI
 
 @Observable
 public class AppAdjustment  {
-    var textScale: CGFloat = 0.5  // 0 ~ 1
+    public var textScale: CGFloat = 0.5  // 0 ~ 1
 }
 
 public extension EnvironmentValues {
