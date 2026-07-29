@@ -23,9 +23,9 @@ import SwiftUI
 
 @Observable
 public class AppAdjustment  {
-    public var textScale: CGFloat = 0.5  // 0 ~ 1
+    public var textScale: Double = 0.5  // 0 ~ 1
 
-    public init(textScale: CGFloat = 0.5) {
+    public init(textScale: Double = 0.5) {
         self.textScale = textScale
     }
 }
