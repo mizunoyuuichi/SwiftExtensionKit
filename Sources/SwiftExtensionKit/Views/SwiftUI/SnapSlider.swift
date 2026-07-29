@@ -30,5 +30,5 @@ public struct SnapSlider: View {
 #Preview {
     @Previewable @State var sampleDouble: Double = 0.5
 
-    SnapSlider(current: $sampleDouble, max: 1, step: 0.1)
+    SnapSlider(current: $sampleDouble, max: 1, step: 0.25)
 }
