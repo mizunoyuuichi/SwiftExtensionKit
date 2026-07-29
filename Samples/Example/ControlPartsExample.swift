@@ -3,12 +3,13 @@ import SwiftExtensionKit
 
 struct ControlPartsExample: View {
 
+    @State var sampleDouble: Double = 0.5
     @State private var selection = 0
     let options = ["A", "B", "C"]
 
     var body: some View {
         VStack {
-            SnapSlider()
+            SnapSlider(current: $sampleDouble, max: 1, step: 0.2)
             VolumeSnapSlider()
 
             Form {
