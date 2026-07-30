@@ -3,11 +3,15 @@
 import SwiftUI
 
 enum ProText: View {
-    case
+    case a
+
+    var body: some View {
+        Text("Hello, World!")
+    }
 }
 
 
 
 #Preview {
-    SwiftUIView()
+    ProText.a
 }
