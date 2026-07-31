@@ -55,23 +55,6 @@ public enum TextStyle {
 
 public extension Text {
 
-    func withTextStyle(_ style: TextStyle = .formally) -> some View {
-        switch style {
-        case .airily:
-            self.kerning(4)
-                .lineSpacing(2.5)
-        case .relaxedly:
-            self.kerning(1.4)
-                .lineSpacing(2)
-        case .formally:
-            self.kerning(-0.4)
-                .lineSpacing(1.3)
-        case .tightly:
-            self.kerning(-0.2)
-                .lineSpacing(1.1)
-        }
-        // MEMO: styleでTextAlignmentは設定させないほうがいいかもしれない
-    }
     /// 基本4つ { airily, relaxedly, formally, tightly }
     // 軽やかに
     func airily(alignment: TextAlignment = .leading) -> some View {
@@ -107,8 +90,25 @@ public extension Text {
 }
 
 
-// MARK: - style
+// MARK: - text style
 public extension View {
+
+    func withTextStyle(_ style: TextStyle) -> some View {
+        switch style {
+        case .airily:
+            self.kerning(4)
+                .lineSpacing(2.5)
+        case .relaxedly:
+            self.kerning(1.4)
+                .lineSpacing(2)
+        case .formally:
+            self.kerning(-0.4)
+                .lineSpacing(1.3)
+        case .tightly:
+            self.kerning(-0.2)
+                .lineSpacing(1.1)
+        }
+    }
 
     func nowrap(_ lineLimit: Int? = 1, minimumScaleFactor: CGFloat? = 0.8) -> some View {
         self
