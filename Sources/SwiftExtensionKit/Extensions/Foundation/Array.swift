@@ -37,3 +37,33 @@ public extension Array {
 		suffix(row)
 	}
 }
+
+
+
+public extension Array where Element: Hashable {
+
+    /// 計算量 平均 O(n) ...入力に比例して増える線形
+    var isUnique: Bool {
+        Set(self).count == self.count
+    }
+
+    /// 計算量 平均 O(n) ...入力に比例して増える線形
+    var duplicates: [Element] {
+        var seen: Set<Element> = []
+        var duplicated: Set<Element> = []
+
+        for element in self {
+            if !seen.insert(element).inserted {
+                duplicated.insert(element)
+            }
+        }
+
+        #if DEBUG
+        if duplicated.count.isPositive {
+            print("// elements has duplicates... \(duplicated)")
+        }
+        #endif
+
+        return Array(duplicated)
+    }
+}
