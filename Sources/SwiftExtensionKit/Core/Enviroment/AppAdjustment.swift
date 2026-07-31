@@ -15,9 +15,9 @@ import SwiftUI
  }
 
  Viewに準拠していれば、どこからでもアクセス可能です。
- @Environment(\.appTheme) private var theme
+ @Environment(\.appAdjustment) private var appAdjustment
 
- Text(text).foregroundColor(theme.primaryColor)
+ Text(text).font(.system(size: 20 * appAdjustment.textScale))
  ***/
 
 
