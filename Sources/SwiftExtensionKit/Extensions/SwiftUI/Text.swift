@@ -46,17 +46,38 @@ public extension Text {
 
 
 // MARK: - style
+public enum TextStyle {
+    case airily
+    case relaxedly
+    case formally
+    case tightly
+}
+
 public extension Text {
 
+    func withTextStyle(_ style: TextStyle = .formally) -> some View {
+        switch style {
+        case .airily:
+            self.kerning(4)
+                .lineSpacing(2.5)
+        case .relaxedly:
+            self.kerning(1.4)
+                .lineSpacing(2)
+        case .formally:
+            self.kerning(-0.4)
+                .lineSpacing(1.3)
+        case .tightly:
+            self.kerning(-0.2)
+                .lineSpacing(1.1)
+        }
+        // MEMO: styleでTextAlignmentは設定させないほうがいいかもしれない
+    }
     /// 基本4つ { airily, relaxedly, formally, tightly }
-
     // 軽やかに
     func airily(alignment: TextAlignment = .leading) -> some View {
         self
             .kerning(4)
             .lineSpacing(2.5)
-            //.frame(maxWidth: .infinity, alignment: alignment)
-            //.frame(alignment: alignment)
             .multilineTextAlignment(alignment)
     }
 
