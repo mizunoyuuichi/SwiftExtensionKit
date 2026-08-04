@@ -10,8 +10,6 @@ public enum ProText: View {
     case caption (_ text: String, _ style: TextStyle)
     case footnote(_ text: String, _ style: TextStyle)
 
-    //@Environment(\.appAdjustment) public var appAdjustment
-
     public var body: some View {
         EnvironmentReader(\.appAdjustment) { adjustment in
             switch self {
