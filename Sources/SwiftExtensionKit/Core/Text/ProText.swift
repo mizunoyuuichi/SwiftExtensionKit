@@ -10,38 +10,42 @@ public enum ProText: View {
     case caption (_ text: String, _ style: TextStyle)
     case footnote(_ text: String, _ style: TextStyle)
 
+    //@Environment(\.appAdjustment) public var appAdjustment
+
     public var body: some View {
-        switch self {
-        case .head(let text, let style):
-            Text(text)
-                .font(.system(size: 18, weight: .bold))
-                .foregroundStyle(Color.k90)
-                .withTextStyle(style)
-        case .subHead(let text, let style):
-            Text(text)
-                .font(.system(size: 17, weight: .semibold))
-                .foregroundStyle(Color.k80)
-                .withTextStyle(style)
-        case .label(let text, let style):
-            Text(text)
-                .font(.system(size: 16, weight: .medium))
-                .foregroundStyle(Color.k80)
-                .withTextStyle(style)
-        case .body(let text, let style):
-            Text(text)
-                .font(.system(size: 16, weight: .regular))
-                .foregroundStyle(Color.k70)
-                .withTextStyle(style)
-        case .caption(let text, let style):
-            Text(text)
-                .font(.system(size: 14, weight: .light))
-                .foregroundStyle(Color.k50)
-                .withTextStyle(style)
-        case .footnote(let text, let style):
-            Text(text)
-                .font(.system(size: 14, weight: .light))
-                .foregroundStyle(Color.k50)
-                .withTextStyle(style)
+        EnvironmentReader(\.appAdjustment) { adjustment in
+            switch self {
+            case .head(let text, let style):
+                Text(text)
+                    .font(.system(size: 18, weight: .bold))
+                    .foregroundStyle(Color.k90)
+                    .withTextStyle(style)
+            case .subHead(let text, let style):
+                Text(text)
+                    .font(.system(size: 17, weight: .semibold))
+                    .foregroundStyle(Color.k80)
+                    .withTextStyle(style)
+            case .label(let text, let style):
+                Text(text)
+                    .font(.system(size: 16, weight: .medium))
+                    .foregroundStyle(Color.k80)
+                    .withTextStyle(style)
+            case .body(let text, let style):
+                Text(text)
+                    .font(.system(size: 16, weight: .regular))
+                    .foregroundStyle(Color.k70)
+                    .withTextStyle(style)
+            case .caption(let text, let style):
+                Text(text)
+                    .font(.system(size: 14, weight: .light))
+                    .foregroundStyle(Color.k50)
+                    .withTextStyle(style)
+            case .footnote(let text, let style):
+                Text(text)
+                    .font(.system(size: 14, weight: .light))
+                    .foregroundStyle(Color.k50)
+                    .withTextStyle(style)
+            }
         }
     }
 
