@@ -11,6 +11,8 @@ public extension Int {
 
     var cgfloat: CGFloat { CGFloat(self) }
 
+    var double: Double   { Double(self) }
+
     var string : String  { String(self) }
 
     var range  : Range<Int> { 0..<self }
