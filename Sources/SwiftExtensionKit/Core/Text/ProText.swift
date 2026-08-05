@@ -15,41 +15,48 @@ public enum ProText: View {
         EnvironmentReader(\.appAdjustment) { adjustment in
             switch self {
             case .head(let text, let style):
-                let size = (18.0 * (adjustment.textScale + 0.5) * 1.4).rounded().cgfloat
+                //let size = (18.0 * (adjustment.textScale + 0.5) * 1.4).rounded().cgfloat
                 Text(text)
-                    .font(.system(size: size, weight: .bold))
+                    .font(.system(size: 18.0, weight: .bold))
                     .foregroundStyle(Color.k90)
                     .withTextStyle(style)
+                    //.fixedSize(horizontal: false, vertical: true)
+                    .scaleEffect((adjustment.textScale + 0.5), anchor: .topLeading)
             case .subHead(let text, let style):
-                let size = (17.0 * (adjustment.textScale + 0.5) * 1.4).rounded().cgfloat
+                //let size = (17.0 * (adjustment.textScale + 0.5) * 1.4).rounded().cgfloat
                 Text(text)
-                    .font(.system(size: size, weight: .semibold))
+                    .font(.system(size: 17.0, weight: .semibold))
                     .foregroundStyle(Color.k80)
                     .withTextStyle(style)
+                    .scaleEffect((adjustment.textScale + 0.5), anchor: .topLeading)
             case .label(let text, let style):
-                let size = (16.0 * (adjustment.textScale + 0.5) * 1.4).rounded().cgfloat
+                //let size = (16.0 * (adjustment.textScale + 0.5) * 1.4).rounded().cgfloat
                 Text(text)
-                    .font(.system(size: size, weight: .medium))
+                    .font(.system(size: 16.0, weight: .medium))
                     .foregroundStyle(Color.k80)
                     .withTextStyle(style)
+                    .scaleEffect((adjustment.textScale + 0.5), anchor: .topLeading)
             case .body(let text, let style):
-                let size = (16.0 * (adjustment.textScale + 0.5) * 1.4).rounded().cgfloat
+                //let size = (16.0 * (adjustment.textScale + 0.5) * 1.4).rounded().cgfloat
                 Text(text)
-                    .font(.system(size: size, weight: .regular))
+                    .font(.system(size: 16.0, weight: .regular))
                     .foregroundStyle(Color.k70)
                     .withTextStyle(style)
+                    .scaleEffect((adjustment.textScale + 0.5), anchor: .topLeading)
             case .caption(let text, let style):
-                let size = (14.0 * (adjustment.textScale + 0.5) * 1.4).rounded().cgfloat
+                //let size = (14.0 * (adjustment.textScale + 0.5) * 1.4).rounded().cgfloat
                 Text(text)
-                    .font(.system(size: size, weight: .light))
+                    .font(.system(size: 16.0, weight: .light))
                     .foregroundStyle(Color.k50)
                     .withTextStyle(style)
+                    .scaleEffect((adjustment.textScale + 0.5), anchor: .topLeading)
             case .footnote(let text, let style):
-                let size = (12.0 * (adjustment.textScale + 0.5) * 1.4).rounded().cgfloat
+                //let size = (12.0 * (adjustment.textScale + 0.5) * 1.4).rounded().cgfloat
                 Text(text)
-                    .font(.system(size: size, weight: .light))
+                    .font(.system(size: 12.0, weight: .light))
                     .foregroundStyle(Color.k50)
                     .withTextStyle(style)
+                    .scaleEffect((adjustment.textScale + 0.5), anchor: .topLeading)
             }
         }
     }
