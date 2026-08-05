@@ -15,71 +15,53 @@ public enum ProText: View {
     public var body: some View {
         EnvironmentReader(\.appAdjustment) { adjustment in
             switch self {
-            case .head(let text, let style):
-                //let size = (18.0 * (adjustment.textScale + 0.5) * 1.4).rounded().cgfloat
+            case .head(let text, let style),
+                 .subHead(let text, let style),
+                 .label(let text, let style),
+                 .body(let text, let style),
+                 .caption(let text, let style),
+                 .footnote(let text, let style):
                 Text(text)
-                    .font(.system(size: 18.0, weight: .bold))
-                    .foregroundStyle(Color.k90)
-                    .withTextStyle(style)
-                    //.fixedSize(horizontal: false, vertical: true)
-                    .scaleEffect((adjustment.textScale + 0.5), anchor: .topLeading)
-            case .subHead(let text, let style):
-                //let size = (17.0 * (adjustment.textScale + 0.5) * 1.4).rounded().cgfloat
-                Text(text)
-                    .font(.system(size: 17.0, weight: .semibold))
-                    .foregroundStyle(Color.k80)
-                    .withTextStyle(style)
-                    .scaleEffect((adjustment.textScale + 0.5), anchor: .topLeading)
-            case .label(let text, let style):
-                //let size = (16.0 * (adjustment.textScale + 0.5) * 1.4).rounded().cgfloat
-                Text(text)
-                    .font(.system(size: 16.0, weight: .medium))
-                    .foregroundStyle(Color.k80)
-                    .withTextStyle(style)
-                    .scaleEffect((adjustment.textScale + 0.5), anchor: .topLeading)
-            case .body(let text, let style):
-                //let size = (16.0 * (adjustment.textScale + 0.5) * 1.4).rounded().cgfloat
-                Text(text)
-                    .font(.system(size: 16.0, weight: .regular))
-                    .foregroundStyle(Color.k70)
-                    .withTextStyle(style)
-                    .scaleEffect((adjustment.textScale + 0.5), anchor: .topLeading)
-            case .caption(let text, let style):
-                //let size = (14.0 * (adjustment.textScale + 0.5) * 1.4).rounded().cgfloat
-                Text(text)
-                    .font(.system(size: 16.0, weight: .light))
-                    .foregroundStyle(Color.k50)
-                    .withTextStyle(style)
-                    .scaleEffect((adjustment.textScale + 0.5), anchor: .topLeading)
-            case .footnote(let text, let style):
-                //let size = (12.0 * (adjustment.textScale + 0.5) * 1.4).rounded().cgfloat
-                Text(text)
-                    .font(.system(size: 12.0, weight: .light))
-                    .foregroundStyle(Color.k50)
+                    .font(.system(size: size, weight: weight))
+                    .foregroundStyle(foregroundStyle)
                     .withTextStyle(style)
                     .scaleEffect((adjustment.textScale + 0.5), anchor: .topLeading)
             }
         }
     }
 
-//    public static func head(style: TextStyle = .formally, _ text: String) -> some View {
-//        ProText.head(style, text).body
-//    }
-//    public static func subHead(style: TextStyle = .formally, _ text: String) -> some View {
-//        ProText.subHead(style, text)
-//    }
-//    public static func label(style: TextStyle = .formally, _ text: String) -> some View {
-//        ProText.label(style, text)
-//    }
-//    public static func body(style: TextStyle = .formally, _ text: String) -> some View {
-//        ProText.body(style, text)
-//    }
-//    public static func caption(style: TextStyle = .formally, _ text: String) -> some View {
-//        ProText.caption(style, text)
-//    }
-//    public static func footnote(style: TextStyle = .formally, _ text: String) ->  some View {
-//        ProText.footnote(style, text)
-//    }
+    var size: CGFloat {
+        switch self {
+        case .head(_, _)    : 18.0
+        case .subHead(_, _) : 17.0
+        case .label(_, _)   : 16.0
+        case .body(_, _)    : 16.0
+        case .caption(_, _) : 14.0
+        case .footnote(_, _): 12.0
+        }
+    }
+
+    var weight: Font.Weight {
+        switch self {
+        case .head(_, _)    : .bold
+        case .subHead(_, _) : .semibold
+        case .label(_, _)   : .medium
+        case .body(_, _)    : .regular
+        case .caption(_, _) : .light
+        case .footnote(_, _): .light
+        }
+    }
+
+    var foregroundStyle: Color {
+        switch self {
+        case .head(_, _)    : Color.k90
+        case .subHead(_, _) : Color.k80
+        case .label(_, _)   : Color.k80
+        case .body(_, _)    : Color.k70
+        case .caption(_, _) : Color.k50
+        case .footnote(_, _): Color.k40
+        }
+    }
 }
 
 
