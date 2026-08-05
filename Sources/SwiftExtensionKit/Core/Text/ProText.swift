@@ -11,6 +11,7 @@ public enum ProText: View {
     case caption (_ text: String, _ style: TextStyle)
     case footnote(_ text: String, _ style: TextStyle)
 
+    // MEMO: .scaleEffect は更新のサイクルの収束を乱さない(更新ループを起こさない)
     public var body: some View {
         EnvironmentReader(\.appAdjustment) { adjustment in
             switch self {
