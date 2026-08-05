@@ -15,37 +15,37 @@ public enum ProText: View {
         EnvironmentReader(\.appAdjustment) { adjustment in
             switch self {
             case .head(let text, let style):
-                let size = (18.0 * adjustment.textScale * 2.0).rounded().cgfloat
+                let size = (18.0 * (adjustment.textScale + 0.5) * 1.4).rounded().cgfloat
                 Text(text)
                     .font(.system(size: size, weight: .bold))
                     .foregroundStyle(Color.k90)
                     .withTextStyle(style)
             case .subHead(let text, let style):
-                let size = (17.0 * adjustment.textScale * 2.0).rounded().cgfloat
+                let size = (17.0 * (adjustment.textScale + 0.5) * 1.4).rounded().cgfloat
                 Text(text)
                     .font(.system(size: size, weight: .semibold))
                     .foregroundStyle(Color.k80)
                     .withTextStyle(style)
             case .label(let text, let style):
-                let size = (16.0 * adjustment.textScale * 2.0).rounded().cgfloat
+                let size = (16.0 * (adjustment.textScale + 0.5) * 1.4).rounded().cgfloat
                 Text(text)
                     .font(.system(size: size, weight: .medium))
                     .foregroundStyle(Color.k80)
                     .withTextStyle(style)
             case .body(let text, let style):
-                let size = (16.0 * adjustment.textScale * 2.0).rounded().cgfloat
+                let size = (16.0 * (adjustment.textScale + 0.5) * 1.4).rounded().cgfloat
                 Text(text)
                     .font(.system(size: size, weight: .regular))
                     .foregroundStyle(Color.k70)
                     .withTextStyle(style)
             case .caption(let text, let style):
-                let size = (14.0 * adjustment.textScale * 2.0).rounded().cgfloat
+                let size = (14.0 * (adjustment.textScale + 0.5) * 1.4).rounded().cgfloat
                 Text(text)
                     .font(.system(size: size, weight: .light))
                     .foregroundStyle(Color.k50)
                     .withTextStyle(style)
             case .footnote(let text, let style):
-                let size = (12.0 * adjustment.textScale * 2.0).rounded().cgfloat
+                let size = (12.0 * (adjustment.textScale + 0.5) * 1.4).rounded().cgfloat
                 Text(text)
                     .font(.system(size: size, weight: .light))
                     .foregroundStyle(Color.k50)
