@@ -116,6 +116,7 @@ public extension Text {
                 .lineSpacing(1.1)
         }
         else {
+            // NOTE: returnはView型につき 指定してない場合、デフォルト値に設定
             return self.kerning(0)
                 .lineSpacing(0)
         }
