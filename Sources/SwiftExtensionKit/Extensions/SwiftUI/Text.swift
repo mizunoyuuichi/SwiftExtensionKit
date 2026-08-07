@@ -45,13 +45,6 @@ public extension Text {
 }
 
 
-// MARK: - style
-public enum TextStyle {
-    case airily
-    case relaxedly
-    case formally
-    case tightly
-}
 
 public extension Text {
 
@@ -92,23 +85,6 @@ public extension Text {
 
 // MARK: - text style
 public extension View {
-
-    func withTextStyle(_ style: TextStyle) -> some View {
-        switch style {
-        case .airily:
-            self.kerning(4)
-                .lineSpacing(2.5)
-        case .relaxedly:
-            self.kerning(1.4)
-                .lineSpacing(2)
-        case .formally:
-            self.kerning(-0.4)
-                .lineSpacing(1.3)
-        case .tightly:
-            self.kerning(-0.2)
-                .lineSpacing(1.1)
-        }
-    }
 
     func nowrap(_ lineLimit: Int? = 1, minimumScaleFactor: CGFloat? = 0.8) -> some View {
         self
