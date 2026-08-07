@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-/// (...いい名前が思いつかないから一旦の名称とする)
+/// 文書レベル ごとに
 public enum ProText: View {
     case head    (_ text: String, _ style: TextStyle)
     case subHead (_ text: String, _ style: TextStyle)
@@ -24,7 +24,7 @@ public enum ProText: View {
                 Text(text)
                     .font(.system(size: size, weight: weight))
                     .foregroundStyle(foregroundStyle)
-                    .withTextStyle(style)
+                    .with(style)
                     .scaleEffect((adjustment.textScale + 0.5), anchor: .topLeading)
             }
         }
@@ -64,15 +64,76 @@ public enum ProText: View {
     }
 }
 
+/// 文章Style を指定する
+public struct TextStyle: OptionSet {
+    public let rawValue: Int
+
+    public init(rawValue: Int) {
+        self.rawValue = rawValue
+    }
+
+    // combination { kerning, lineSpacing }
+    public static let airily    = TextStyle(rawValue: 1 << 0)
+    public static let relaxedly = TextStyle(rawValue: 1 << 1)
+    public static let formally  = TextStyle(rawValue: 1 << 2)
+    public static let tightly   = TextStyle(rawValue: 1 << 3)
+
+    // individual
+    public static let nowrap    = TextStyle(rawValue: 1 << 4)
+    public static let leading   = TextStyle(rawValue: 1 << 5)
+    public static let trailing  = TextStyle(rawValue: 1 << 6)
+
+    // TODO: fontfamily (上書き訂正用)追加
+}
+
+
+
+// MARK: - TextStyle
+public extension Text {
+
+    // ProText用なので これだけ Extensionsディレクトリではなくこちらに記載
+    func with(_ style: TextStyle) -> some View {
+        var text: Text = self
+
+        if style.contains(.nowrap)   { lineLimit(1) }
+        if style.contains(.leading)  { frame(alignment: .leading) }
+        if style.contains(.trailing) { frame(alignment: .trailing) }
+
+        if style.contains(.airily)   {
+            return self.kerning(4)
+                .lineSpacing(2.5)
+        }
+        else if style.contains(.relaxedly)   {
+            return self.kerning(1.4)
+                .lineSpacing(2)
+        }
+        else if style.contains(.formally)   {
+            return self.kerning(-0.4)
+                .lineSpacing(1.3)
+        }
+        else if style.contains(.tightly)   {
+            return self.kerning(-0.2)
+                .lineSpacing(1.1)
+        }
+        else {
+            return self.kerning(0)
+                .lineSpacing(0)
+        }
+    }
+}
 
 
 #Preview {
     let sampleText: String = "日替わりセール 2026/06/15 あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。"
     VStack(spacing: 4) {
+        // 文章レベル +> テキスト +> スタイル という順に書いていく
         ProText.head(sampleText, .airily)
         ProText.head(sampleText, .relaxedly)
         ProText.head(sampleText, .formally)
         ProText.head(sampleText, .tightly)
+
+        // テキストのレベル 以外のスタイルは 複数組み合わせで ','区切りで指定可能
+        ProText.head(sampleText, [.formally, .trailing, .nowrap])
 
 //        ProText.head(sampleText).withTextStyle(.airily)
 //        ProText.head(sampleText).withTextStyle(.relaxedly)
