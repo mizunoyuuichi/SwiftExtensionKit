@@ -125,45 +125,45 @@ public extension Text {
 
 
 #Preview {
-    let sampleText: String = "日替わりセール 2026/06/15 あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。"
+    let sampleString: String = "日替わりセール 2026/06/15 あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。"
     VStack(spacing: 4) {
         // 文章レベル +> テキスト +> スタイル という順に書いていく
-        ProText.head(sampleText, .airily)
-        ProText.head(sampleText, .relaxedly)
-        ProText.head(sampleText, .formally)
-        ProText.head(sampleText, .tightly)
+        ProText.head(sampleString, .airily)
+        ProText.head(sampleString, .relaxedly)
+        ProText.head(sampleString, .formally)
+        ProText.head(sampleString, .tightly)
 
         // テキストのレベル 以外のスタイルは 複数組み合わせで ','区切りで指定可能
-        ProText.head(sampleText, [.formally, .trailing, .nowrap])
+        ProText.head(sampleString, [.formally, .trailing, .nowrap])
 
-//        ProText.head(sampleText).withTextStyle(.airily)
-//        ProText.head(sampleText).withTextStyle(.relaxedly)
-//        ProText.head(sampleText).withTextStyle(.formally)
-//        ProText.head(sampleText).withTextStyle()
+//        ProText.head(sampleString).withTextStyle(.airily)
+//        ProText.head(sampleString).withTextStyle(.relaxedly)
+//        ProText.head(sampleString).withTextStyle(.formally)
+//        ProText.head(sampleString).withTextStyle()
 
-//        ProText.subHead(.airily, sampleText)
-//        ProText.subHead(.relaxedly, sampleText)
-//        ProText.subHead(.formally, sampleText)
-//        ProText.subHead(.tightly, sampleText)
+//        ProText.subHead(.airily, sampleString)
+//        ProText.subHead(.relaxedly, sampleString)
+//        ProText.subHead(.formally, sampleString)
+//        ProText.subHead(.tightly, sampleString)
 //
-//        ProText.label(.airily, sampleText)
-//        ProText.label(.relaxedly, sampleText)
-//        ProText.label(.formally, sampleText)
-//        ProText.label(.tightly, sampleText)
+//        ProText.label(.airily, sampleString)
+//        ProText.label(.relaxedly, sampleString)
+//        ProText.label(.formally, sampleString)
+//        ProText.label(.tightly, sampleString)
 //
-//        ProText.body(.airily, sampleText)
-//        ProText.body(.relaxedly, sampleText)
-//        ProText.body(.formally, sampleText)
-//        ProText.body(.tightly, sampleText)
+//        ProText.body(.airily, sampleString)
+//        ProText.body(.relaxedly, sampleString)
+//        ProText.body(.formally, sampleString)
+//        ProText.body(.tightly, sampleString)
 //
-//        ProText.caption(.airily, sampleText)
-//        ProText.caption(.relaxedly, sampleText)
-//        ProText.caption(.formally, sampleText)
-//        ProText.caption(.tightly, sampleText)
+//        ProText.caption(.airily, sampleString)
+//        ProText.caption(.relaxedly, sampleString)
+//        ProText.caption(.formally, sampleString)
+//        ProText.caption(.tightly, sampleString)
 //
-//        ProText.footnote(.airily, sampleText)
-//        ProText.footnote(.relaxedly, sampleText)
-//        ProText.footnote(.formally, sampleText)
-//        ProText.footnote(.tightly, sampleText)
+//        ProText.footnote(.airily, sampleString)
+//        ProText.footnote(.relaxedly, sampleString)
+//        ProText.footnote(.formally, sampleString)
+//        ProText.footnote(.tightly, sampleString)
     }
 }
