@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-extension AnyTransition {
+public extension AnyTransition {
     /// 指定した不透明度から 1.0 へ
     static func fade(from: Double) -> AnyTransition {
         .modifier(
@@ -12,9 +12,9 @@ extension AnyTransition {
     }
 }
 
-struct OpacityModifier: ViewModifier {
+public struct OpacityModifier: ViewModifier {
     let opacity: Double
-    func body(content: Content) -> some View {
+    public func body(content: Content) -> some View {
         content.opacity(opacity)
     }
 }
