@@ -2,7 +2,7 @@
 
 import Foundation
 
-extension CGFloat {
+public extension CGFloat {
 
     static var one : CGFloat { CGFloat(1.0) }
 
