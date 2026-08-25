@@ -1,2 +1,3 @@
 # SwiftExtensionKit
 Swiftのextensionを集めたものになります。partsも含みます。
+UIKitも消している箇所があります。ビルドでエラーが出た場合、Uikit.frameworkを追加して使用してください。
