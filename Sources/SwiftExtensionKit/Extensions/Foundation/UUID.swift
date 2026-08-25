@@ -1,3 +1,5 @@
+//  Created by Mizuno Yuichi
+
 import Foundation
 
 public extension UUID {

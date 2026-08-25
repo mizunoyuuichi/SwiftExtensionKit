@@ -1,3 +1,5 @@
+//  Created by Mizuno Yuichi
+
 import Foundation
 
 let kServerDateTimeFormat      = String("yyyy-MM-dd'T'HH:mm:ss.SSSZZZZ")

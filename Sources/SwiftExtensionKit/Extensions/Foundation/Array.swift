@@ -1,4 +1,4 @@
-//  Created by Yuuichi Mizuno
+//  Created by Mizuno Yuichi
 
 import Foundation
 
