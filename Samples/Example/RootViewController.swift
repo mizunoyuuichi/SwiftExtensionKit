@@ -32,6 +32,9 @@ extension RootViewController {
         //view.addSubviewWithConstraintAround(InputSheetExample.buildOnViewController().view)
         //view.addSubviewWithConstraintAround(CenteredPopupExample.buildOnViewController().view)
         //view.addSubviewWithConstraintAround(BottomDockMenuExample.buildOnViewController().view)
-        view.addSubviewWithConstraintAround(ControlPartsExample.buildOnViewController().view)
+        //view.addSubviewWithConstraintAround(ControlPartsExample.buildOnViewController().view)
+        //view.addSubviewWithConstraintAround(FlatOutlineView.buildOnViewController().view)
+        //view.addSubviewWithConstraintAround(FlatOutlineView2.buildOnViewController().view)
+        view.addSubviewWithConstraintAround(TreeView.buildOnViewController().view)
     }
 }
