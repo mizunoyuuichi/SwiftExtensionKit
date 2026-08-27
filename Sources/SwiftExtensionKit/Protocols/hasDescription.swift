@@ -1,6 +1,6 @@
 //  Created by Yuuichi Mizuno
 import Foundation
 
-public protocol hasDescription {
+public protocol HasDescription {
 	var description: String { get }
 }
