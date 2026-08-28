@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-public struct FilterSwitch<T: CaseIterable & hasDescription & Hashable> : View {
+public struct FilterSwitch<T: CaseIterable & HasDescription & Hashable> : View {
     var current: T
     var selected: ((T)->Void)?
 
