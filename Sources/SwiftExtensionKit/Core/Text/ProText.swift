@@ -83,6 +83,9 @@ public struct TextStyle: OptionSet {
     public static let leading   = TextStyle(rawValue: 1 << 5)
     public static let trailing  = TextStyle(rawValue: 1 << 6)
 
+    public static let fixedWidth = TextStyle(rawValue: 1 << 7)
+    public static let fixedHeight = TextStyle(rawValue: 1 << 8)
+
     // TODO: fontfamily (上書き訂正用)追加
 }
 
@@ -95,9 +98,16 @@ public extension Text {
     func with(_ style: TextStyle) -> some View {
         var text: Text = self
 
-        if style.contains(.nowrap)   { lineLimit(1) }
-        if style.contains(.leading)  { frame(alignment: .leading) }
-        if style.contains(.trailing) { frame(alignment: .trailing) }
+        if style.contains(.nowrap)     { lineLimit(1) }
+        if style.contains(.leading)     { frame(alignment: .leading) }
+        if style.contains(.trailing)    { frame(alignment: .trailing) }
+
+        if style.contains(.fixedWidth)  {
+            fixedSize(horizontal: true, vertical: false)
+        }
+        else if style.contains(.fixedHeight) {
+            fixedSize(horizontal: false, vertical: true)
+        }
 
         if style.contains(.airily)   {
             return self.kerning(4)
