@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-public struct SegmentSwitch<T: CaseIterable & hasDescription & hasIconName & Hashable>: View {
+public struct SegmentSwitch<T: CaseIterable & HasDescription & HasIconName & Hashable>: View {
 
     @Binding private var current : T
     // NOTE: アイコンとタイトルの混在が推奨されておらず テキストのみになる
@@ -47,7 +47,7 @@ public struct SegmentSwitch<T: CaseIterable & hasDescription & hasIconName & Has
 }
 
 // MARK: - プレビュー用のサンプル enum
-public enum SampleTab: CaseIterable, hasDescription, hasIconName, Hashable {
+public enum SampleTab: CaseIterable, HasDescription, HasIconName, Hashable {
     case list
     case grid
     case map
