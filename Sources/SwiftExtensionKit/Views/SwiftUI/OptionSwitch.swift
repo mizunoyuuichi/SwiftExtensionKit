@@ -4,7 +4,7 @@ import Foundation
 import SwiftUI
 
 
-public struct OptionSwitch<T: CaseIterable & hasDescription & hasIconName & Hashable> : View {
+public struct OptionSwitch<T: CaseIterable & HasDescription & HasIconName & Hashable> : View {
     @Binding private var current : T
 
     public var onChanged : ((T)->())?
@@ -53,7 +53,7 @@ public struct OptionSwitch<T: CaseIterable & hasDescription & hasIconName & Hash
 }
 
 
-private enum OptionSwitchPreviewMode: CaseIterable, hasDescription, hasIconName {
+private enum OptionSwitchPreviewMode: CaseIterable, HasDescription, HasIconName {
     case all
     case favorites
     case recent
