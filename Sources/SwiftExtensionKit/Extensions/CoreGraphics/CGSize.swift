@@ -3,7 +3,7 @@
 import Foundation
 
 // MARK: - resize
-extension CGSize {
+public extension CGSize {
 
     func smaller(_ range: CGFloat) -> CGSize {
         CGSize(width:  self.width  - range,
