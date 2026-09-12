@@ -1,5 +1,4 @@
 import SwiftUI
-import UIKit
 
 /// UILongPressGestureRecognizer を SwiftUI で使うためのラッパ。
 ///
