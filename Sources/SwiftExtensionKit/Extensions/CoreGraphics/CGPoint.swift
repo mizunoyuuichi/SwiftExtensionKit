@@ -5,7 +5,7 @@ import Foundation
 // MARK: - cast
 public extension CGPoint {
 
-    var size: CGSize {
+    var toSize: CGSize {
         CGSize(width:  self.x, height: self.y)
     }
 }
