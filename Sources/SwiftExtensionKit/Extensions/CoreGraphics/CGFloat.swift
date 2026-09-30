@@ -8,6 +8,7 @@ public extension CGFloat {
 
     static var zero: CGFloat { CGFloat(0.0) }
 
+    var harf: CGFloat { self / 2 }
 
     var double: CGFloat { self * 2 }
 
