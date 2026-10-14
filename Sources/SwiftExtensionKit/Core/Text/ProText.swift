@@ -15,12 +15,12 @@ public enum ProText: View {
     public var body: some View {
         EnvironmentReader(\.appAdjustment) { adjustment in
             switch self {
-            case .head(let text, let style),
-                 .subHead(let text, let style),
-                 .label(let text, let style),
-                 .body(let text, let style),
-                 .caption(let text, let style),
-                 .footnote(let text, let style):
+            case .head     (let text, let style),
+                 .subHead  (let text, let style),
+                 .label    (let text, let style),
+                 .body     (let text, let style),
+                 .caption  (let text, let style),
+                 .footnote (let text, let style):
                 Text(text)
                     .font(.system(size: size, weight: weight))
                     .foregroundStyle(foregroundStyle)
