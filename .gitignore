@@ -2,3 +2,6 @@ Samples/Example.xcodeproj/project.xcworkspace/xcuserdata/mizen.xcuserdatad/UserI
 
 # SwiftPM build output
 .build/
+
+# Xcode per-user data (breakpoints, UI state, scheme management)
+xcuserdata/

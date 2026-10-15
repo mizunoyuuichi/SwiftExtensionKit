@@ -14,19 +14,8 @@ public enum ProText: View {
     // MEMO: .scaleEffect は更新のサイクルの収束を乱さない(更新ループを起こさない)
     public var body: some View {
         EnvironmentReader(\.appAdjustment) { adjustment in
-            switch self {
-            case .head     (let text, let style),
-                 .subHead  (let text, let style),
-                 .label    (let text, let style),
-                 .body     (let text, let style),
-                 .caption  (let text, let style),
-                 .footnote (let text, let style):
-                Text(text)
-                    .font(.system(size: size, weight: weight))
-                    .foregroundStyle(foregroundStyle)
-                    .with(style)
-                    .scaleEffect((adjustment.textScale + 0.5), anchor: .topLeading)
-            }
+            Text.with(self)
+                .scaleEffect((adjustment.textScale + 0.5), anchor: .topLeading)
         }
     }
 
@@ -73,20 +62,52 @@ public struct TextStyle: OptionSet {
     }
 
     // combination { kerning, lineSpacing }
-    public static let airily    = TextStyle(rawValue: 1 << 0)
-    public static let relaxedly = TextStyle(rawValue: 1 << 1)
-    public static let formally  = TextStyle(rawValue: 1 << 2)
-    public static let tightly   = TextStyle(rawValue: 1 << 3)
+    public static let airily      = TextStyle(rawValue: 1 << 0)
+    public static let relaxedly   = TextStyle(rawValue: 1 << 1)
+    public static let formally    = TextStyle(rawValue: 1 << 2)
+    public static let tightly     = TextStyle(rawValue: 1 << 3)
 
     // individual
-    public static let nowrap    = TextStyle(rawValue: 1 << 4)
-    public static let leading   = TextStyle(rawValue: 1 << 5)
-    public static let trailing  = TextStyle(rawValue: 1 << 6)
+    public static let nowrap      = TextStyle(rawValue: 1 << 4)
+    public static let leading     = TextStyle(rawValue: 1 << 5)
+    public static let trailing    = TextStyle(rawValue: 1 << 6)
 
-    public static let fixedWidth = TextStyle(rawValue: 1 << 7)
+    public static let fixedWidth  = TextStyle(rawValue: 1 << 7)
     public static let fixedHeight = TextStyle(rawValue: 1 << 8)
 
     // TODO: fontfamily (上書き訂正用)追加
+
+    var lineLimit: Int? {
+        contains(.nowrap) ? 1 : nil
+    }
+
+    var alignment: Alignment {
+        contains(.trailing) ? Alignment.trailing : Alignment.leading
+    }
+
+    var isFixedWidth: Bool {
+        contains(.fixedWidth)
+    }
+
+    var isFixedHeight: Bool {
+        contains(.fixedHeight)
+    }
+
+    var kerning: CGFloat {
+        if      contains(.airily)   {  4.0 }
+        else if contains(.relaxedly){  1.4 }
+        else if contains(.formally) { -0.4 }
+        else if contains(.tightly)  { -0.2 }
+        else                        {  0   }
+    }
+
+    var lineSpacing: CGFloat {
+        if      contains(.airily)   {  2.5 }
+        else if contains(.relaxedly){  2.0 }
+        else if contains(.formally) {  1.3 }
+        else if contains(.tightly)  {  1.1 }
+        else                        {  0   }
+    }
 }
 
 
@@ -95,40 +116,23 @@ public struct TextStyle: OptionSet {
 public extension Text {
 
     // ProText用なので これだけ Extensionsディレクトリではなくこちらに記載
-    func with(_ style: TextStyle) -> some View {
-        var text: Text = self
+    static func with(_ type: ProText) -> some View {
 
-        if style.contains(.nowrap)     { lineLimit(1) }
-        if style.contains(.leading)     { frame(alignment: .leading) }
-        if style.contains(.trailing)    { frame(alignment: .trailing) }
-
-        if style.contains(.fixedWidth)  {
-            fixedSize(horizontal: true, vertical: false)
-        }
-        else if style.contains(.fixedHeight) {
-            fixedSize(horizontal: false, vertical: true)
-        }
-
-        if style.contains(.airily)   {
-            return self.kerning(4)
-                .lineSpacing(2.5)
-        }
-        else if style.contains(.relaxedly)   {
-            return self.kerning(1.4)
-                .lineSpacing(2)
-        }
-        else if style.contains(.formally)   {
-            return self.kerning(-0.4)
-                .lineSpacing(1.3)
-        }
-        else if style.contains(.tightly)   {
-            return self.kerning(-0.2)
-                .lineSpacing(1.1)
-        }
-        else {
-            // NOTE: returnはView型につき 指定してない場合、デフォルト値に設定
-            return self.kerning(0)
-                .lineSpacing(0)
+        switch type {
+        case .head     (let text, let style),
+             .subHead  (let text, let style),
+             .label    (let text, let style),
+             .body     (let text, let style),
+             .caption  (let text, let style),
+             .footnote (let text, let style):
+            Text(text)
+                .font(.system(size: type.size, weight: type.weight))
+                .kerning(style.kerning)
+                .foregroundStyle(type.foregroundStyle)
+                .fixedSize(horizontal: style.isFixedWidth, vertical: style.isFixedHeight)
+                .lineSpacing(style.lineSpacing)
+                .lineLimit(style.lineLimit)
+                .frame(maxWidth: .infinity, alignment: style.alignment)
         }
     }
 }
@@ -138,10 +142,12 @@ public extension Text {
     let sampleString: String = "日替わりセール 2026/06/15 あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。"
     VStack(spacing: 4) {
         // 文章レベル +> テキスト +> スタイル という順に書いていく
-        ProText.head(sampleString, .airily)
-        ProText.head(sampleString, .relaxedly)
-        ProText.head(sampleString, .formally)
-        ProText.head(sampleString, .tightly)
+        ProText.head(sampleString, [.formally, .leading])
+        ProText.subHead(sampleString, [.formally, .leading])
+        ProText.label(sampleString, [.formally, .leading])
+        ProText.body(sampleString, [.formally, .leading])
+        ProText.caption(sampleString, [.formally, .leading])
+        ProText.footnote(sampleString, [.formally, .leading])
 
         // テキストのレベル 以外のスタイルは 複数組み合わせで ','区切りで指定可能
         ProText.head(sampleString, [.formally, .trailing, .nowrap])
