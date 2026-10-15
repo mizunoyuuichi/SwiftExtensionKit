@@ -1,5 +1,6 @@
 //  Created by Yuuichi Mizuno
 
+#if canImport(UIKit) && !os(watchOS)
 import UIKit
 
 // MARK: - hierarchy
@@ -18,3 +19,4 @@ public extension UIView { // MARK: - add / remove
     }
 }
 
+#endif
