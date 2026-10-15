@@ -9,7 +9,7 @@ import Foundation
 /// }
 
 // MARK: - インストールID（初回に一度だけランダムに決めて固定）
-@available(iOS 18.0, *)
+@available(iOS 18.0, macOS 15.0, tvOS 18.0, watchOS 11.0, *)
 public enum InstallID {
     /// 6桁（0..<1_000_000）のランダム値。初回生成後は保存して固定。
     static let value: UInt128 = {
@@ -27,7 +27,7 @@ public enum InstallID {
 
 
 // MARK: - 読みやすいユニークID生成器
-@available(iOS 18.0, *)
+@available(iOS 18.0, macOS 15.0, tvOS 18.0, watchOS 11.0, *)
 final public class ReadableIDGenerator {
 
     public static let shared = ReadableIDGenerator()   // singleton
