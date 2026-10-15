@@ -58,7 +58,7 @@ public extension View {
     /// 背景半透明
     @ViewBuilder
     public func dockGlassBackground(cornerRadius: CGFloat) -> some View {
-        if #available(iOS 26.0, *) {
+        if #available(iOS 26.0, macOS 26.0, tvOS 26.0, watchOS 26.0, *) {
             glassEffect(.regular, in: .rect(cornerRadius: cornerRadius))
         } else {
             background(
