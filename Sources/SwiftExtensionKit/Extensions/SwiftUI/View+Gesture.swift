@@ -1,5 +1,7 @@
 import SwiftUI
 
+#if canImport(UIKit) && !os(watchOS)
+
 /// UILongPressGestureRecognizer を SwiftUI で使うためのラッパ。
 ///
 /// SwiftUI の DragGesture は ScrollView との共存が難しい一方、
@@ -96,3 +98,5 @@ private struct _LongPressDragRecognizerView: UIViewRepresentable {
         }
     }
 }
+
+#endif
