@@ -1,5 +1,6 @@
 //  Created by Yuuichi Mizuno.
 
+#if canImport(UIKit) && !os(watchOS)
 import UIKit
 
 // MARK: - hierarchy
@@ -16,3 +17,5 @@ public extension UIViewController {
     }
 
 }
+
+#endif
