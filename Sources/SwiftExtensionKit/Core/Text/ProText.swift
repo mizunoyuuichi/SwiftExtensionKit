@@ -94,11 +94,12 @@ public struct TextStyle: OptionSet {
     }
 
     var kerning: CGFloat {
-        if      contains(.airily)   {  4.0 }
-        else if contains(.relaxedly){  1.4 }
-        else if contains(.formally) { -0.4 }
-        else if contains(.tightly)  { -0.2 }
-        else                        {  0   }
+//        if      contains(.airily)   {  4.0 }
+//        else if contains(.relaxedly){  1.4 }
+//        else if contains(.formally) { -0.4 }
+//        else if contains(.tightly)  { -0.2 }
+//        else                        {  0   }
+        return 0.0 // 検証のため0にして
     }
 
     var lineSpacing: CGFloat {
