@@ -21,34 +21,34 @@ public enum ProText: View {
 
     var size: CGFloat {
         switch self {
-        case .head(_, _)    : 18.0
-        case .subHead(_, _) : 17.0
-        case .label(_, _)   : 16.0
-        case .body(_, _)    : 16.0
-        case .caption(_, _) : 14.0
-        case .footnote(_, _): 12.0
+        case .head    : 18.0
+        case .subHead : 17.0
+        case .label   : 16.0
+        case .body    : 16.0
+        case .caption : 14.0
+        case .footnote: 12.0
         }
     }
 
     var weight: Font.Weight {
         switch self {
-        case .head(_, _)    : .bold
-        case .subHead(_, _) : .semibold
-        case .label(_, _)   : .medium
-        case .body(_, _)    : .regular
-        case .caption(_, _) : .light
-        case .footnote(_, _): .light
+        case .head    : .bold
+        case .subHead : .semibold
+        case .label   : .medium
+        case .body    : .regular
+        case .caption : .light
+        case .footnote: .light
         }
     }
 
     var foregroundStyle: Color {
         switch self {
-        case .head(_, _)    : Color.k90
-        case .subHead(_, _) : Color.k80
-        case .label(_, _)   : Color.k80
-        case .body(_, _)    : Color.k70
-        case .caption(_, _) : Color.k50
-        case .footnote(_, _): Color.k40
+        case .head    : .adapt(light: Color.k10, dark: Color.k90)
+        case .subHead : .adapt(light: Color.k20, dark: Color.k80)
+        case .label   : .adapt(light: Color.k20, dark: Color.k80)
+        case .body    : .adapt(light: Color.k30, dark: Color.k70)
+        case .caption : .adapt(light: Color.k50, dark: Color.k50)
+        case .footnote: .adapt(light: Color.k60, dark: Color.k40)
         }
     }
 }
@@ -142,11 +142,11 @@ public extension Text {
     let sampleString: String = "日替わりセール 2026/06/15 あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。"
     VStack(spacing: 4) {
         // 文章レベル +> テキスト +> スタイル という順に書いていく
-        ProText.head(sampleString, [.formally, .leading])
-        ProText.subHead(sampleString, [.formally, .leading])
-        ProText.label(sampleString, [.formally, .leading])
-        ProText.body(sampleString, [.formally, .leading])
-        ProText.caption(sampleString, [.formally, .leading])
+        ProText.head(sampleString,     [.formally, .leading])
+        ProText.subHead(sampleString,  [.formally, .leading])
+        ProText.label(sampleString,    [.formally, .leading])
+        ProText.body(sampleString,     [.formally, .leading])
+        ProText.caption(sampleString,  [.formally, .leading])
         ProText.footnote(sampleString, [.formally, .leading])
 
         // テキストのレベル 以外のスタイルは 複数組み合わせで ','区切りで指定可能
