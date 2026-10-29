@@ -25,8 +25,8 @@ public enum ProText: View {
         case .subHead : 17.0
         case .label   : 16.0
         case .body    : 16.0
-        case .caption : 14.0
-        case .footnote: 12.0
+        case .caption : 15.0
+        case .footnote: 14.0
         }
     }
 
