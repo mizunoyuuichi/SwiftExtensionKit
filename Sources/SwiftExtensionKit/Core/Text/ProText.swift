@@ -43,12 +43,12 @@ public enum ProText: View {
 
     var foregroundStyle: Color {
         switch self {
-        case .head    : .adapt(light: Color.k10, dark: Color.k90)
-        case .subHead : .adapt(light: Color.k20, dark: Color.k80)
-        case .label   : .adapt(light: Color.k20, dark: Color.k80)
-        case .body    : .adapt(light: Color.k30, dark: Color.k70)
+        case .head    : .adapt(light: Color.k90, dark: Color.k10)
+        case .subHead : .adapt(light: Color.k80, dark: Color.k20)
+        case .label   : .adapt(light: Color.k80, dark: Color.k20)
+        case .body    : .adapt(light: Color.k70, dark: Color.k30)
         case .caption : .adapt(light: Color.k50, dark: Color.k50)
-        case .footnote: .adapt(light: Color.k60, dark: Color.k40)
+        case .footnote: .adapt(light: Color.k40, dark: Color.k60)
         }
     }
 }
