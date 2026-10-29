@@ -31,14 +31,15 @@ public enum ProText: View {
     }
 
     var weight: Font.Weight {
-        switch self {
-        case .head    : .bold
-        case .subHead : .semibold
-        case .label   : .medium
-        case .body    : .regular
-        case .caption : .light
-        case .footnote: .light
-        }
+//        switch self {
+//        case .head    : .bold
+//        case .subHead : .semibold
+//        case .label   : .medium
+//        case .body    : .regular
+//        case .caption : .light
+//        case .footnote: .light
+//        }
+        return .regular // 検証用に標準にしている
     }
 
     var foregroundStyle: Color {
