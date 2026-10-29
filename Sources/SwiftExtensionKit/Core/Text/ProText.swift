@@ -42,6 +42,23 @@ public enum ProText: View {
         return .regular // 検証用に標準にしている
     }
 
+//    var kerning: CGFloat {
+////        if      contains(.airily)   {  4.0 }
+////        else if contains(.relaxedly){  1.4 }
+////        else if contains(.formally) { -0.4 }
+////        else if contains(.tightly)  { -0.2 }
+////        else                        {  0   }
+//        //return 3.0 // 検証のため変更している
+//        switch self {
+//        case .head    : 2.0
+//        case .subHead : 2.0
+//        case .label   : 2.0
+//        case .body    : 2.0
+//        case .caption : 2.0
+//        case .footnote: 2.0
+//        }
+//    }
+
     var foregroundStyle: Color {
         switch self {
         case .head    : .adapt(light: Color.k90, dark: Color.k10)
@@ -95,20 +112,21 @@ public struct TextStyle: OptionSet {
     }
 
     var kerning: CGFloat {
-//        if      contains(.airily)   {  4.0 }
-//        else if contains(.relaxedly){  1.4 }
-//        else if contains(.formally) { -0.4 }
-//        else if contains(.tightly)  { -0.2 }
-//        else                        {  0   }
-        return 0.0 // 検証のため0にして
+        if      contains(.airily)   {  5.0 }
+        else if contains(.relaxedly){  3.0 }
+        else if contains(.formally) {  1.0 }
+        else if contains(.tightly)  { -1.0 }
+        else                        {  0.0 } // normal
     }
 
     var lineSpacing: CGFloat {
-        if      contains(.airily)   {  2.5 }
-        else if contains(.relaxedly){  2.0 }
-        else if contains(.formally) {  1.3 }
-        else if contains(.tightly)  {  1.1 }
-        else                        {  0   }
+//        if      contains(.airily)   {  2.5 }
+//        else if contains(.relaxedly){  2.0 }
+//        else if contains(.formally) {  1.3 }
+//        else if contains(.tightly)  {  1.1 }
+//        else                        {  0   }
+
+        return 0.0 // 検証のため変更している
     }
 }
 
@@ -141,7 +159,9 @@ public extension Text {
 
 
 #Preview {
-    let sampleString: String = "日替わりセール 2026/06/15 あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。"
+    let sampleString = "日替わりセール 2026/06/15 あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。"
+    let testString1  = "トイレ(便器,便座,ペーパーホルダー)"
+    let testString2  = "※ ペーパーホルダー は 壁紙交換時につけてもらう"
     VStack(spacing: 4) {
         // 文章レベル +> テキスト +> スタイル という順に書いていく
         ProText.head(sampleString,     [.formally, .leading])
@@ -153,6 +173,14 @@ public extension Text {
 
         // テキストのレベル 以外のスタイルは 複数組み合わせで ','区切りで指定可能
         ProText.head(sampleString, [.formally, .trailing, .nowrap])
+
+        ProText.head(testString1 + "  - airily", [.airily])
+        ProText.head(testString1 + "  - relaxedly", [.relaxedly])
+        ProText.head(testString1 + "  - formally", [.formally])
+        ProText.head(testString1 + "  - normal", [])
+        ProText.head(testString1 + "  - tightly", [.tightly])
+
+        ProText.caption(testString2, [.formally, .nowrap])
 
 //        ProText.head(sampleString).withTextStyle(.airily)
 //        ProText.head(sampleString).withTextStyle(.relaxedly)
